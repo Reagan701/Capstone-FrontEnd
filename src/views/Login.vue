@@ -1,11 +1,9 @@
 <template>
-    <div class="login container">
-        <h1>Login</h1>
-        <form @submit="login">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" @click="reset" v-model="email" required class="form-control">
-            <label for="password" @click="reset" class="form-label">Password</label>
-            <input type="password" class="form-control" required v-model="password">
+    <div class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
+        <h1 class="w-100">Login</h1>
+        <form class="w-50 d-flex flex-column" @submit="login">
+            <input type="email" @click="reset" v-model="email" required placeholder="email@example.com">
+            <input class="my-5" type="password" required v-model="password" @click="reset" placeholder="password">
             <div v-if="clicked">
                 <div v-if="user">
                     <p>Successfully logged in</p>
@@ -15,7 +13,7 @@
                 </div>
             </div>
             <div v-else>
-                <button class="btn btn-dark" type="submit">Login</button>
+                <button class="confirm" type="submit">Login</button>
             </div>
         </form>
     </div>
@@ -53,5 +51,16 @@ export default {
 </script>
 
 <style scoped>
+.login{
+    padding-top:84px;
+}
 
+h1{
+    font-weight: 900;
+}
+
+
+*{
+    font-family: 'Roboto',sans-serif;
+}
 </style>

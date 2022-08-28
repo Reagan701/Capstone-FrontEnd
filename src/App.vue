@@ -1,25 +1,48 @@
 <template>
   <Navbar/>
-  <div id="routerview">
-    <router-view/>
-  </div>
+  <router-view/>
+  <Footer />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-#routerview{
-  padding-top:100px
+input{
+  border: 2px solid black;
+  padding-top:0.5rem;
+  padding-left:0.6rem;
+  padding-bottom:0.6rem;
+  width: 100%;
 }
 
-nav {
-  padding: 30px;
+input::placeholder{
+  font-family: 'Roboto', sans-serif;
+}
+
+.confirm{
+    border: 2px solid black;
+    width:250px;
+    padding-top:0.5rem;
+    padding-left:0.6rem;
+    padding-bottom:0.6rem;
+    background: transparent;
+    font-weight: 900;
+    transition: all 0.15s linear;
+}
+
+.confirm:hover{
+    background: black;
+    border: 2px solid white;
+    color:white
+}
+
+.viewport{
+  min-height: 100vh;
 }
 
 nav a {
@@ -28,13 +51,17 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: blue;
+}
+nav a:hover {
+  color: darkblue;
 }
 </style>
 
 <script>
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 export default {
-  components:{Navbar}
+  components:{Navbar, Footer}
 }
 </script>
