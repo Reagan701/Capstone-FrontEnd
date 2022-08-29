@@ -25,20 +25,36 @@ input::placeholder{
 }
 
 .confirm{
-    border: 2px solid black;
-    width:250px;
-    padding-top:0.5rem;
-    padding-left:0.6rem;
-    padding-bottom:0.6rem;
-    background: transparent;
-    font-weight: 900;
-    transition: all 0.15s linear;
+  border: 2px solid black;
+  width:250px;
+  padding-top:0.5rem;
+  padding-left:0.6rem;
+  padding-bottom:0.6rem;
+  background: transparent;
+  font-weight: 900;
+  transition: all 0.15s linear;
 }
 
+.adminConfirm{
+  border: 1px solid white;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background: transparent;
+  color: white;
+  font-weight: 900;
+  transition: all 0.15s linear;
+}
+.adminConfirm:hover{
+  background: white;
+  border: 1px solid transparent;
+  color:black
+}
 .confirm:hover{
-    background: black;
-    border: 2px solid white;
-    color:white
+  background: black;
+  border: 2px solid white;
+  color:white
 }
 
 .viewport{

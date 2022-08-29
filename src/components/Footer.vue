@@ -48,10 +48,6 @@ export default {
     font-weight: 900 !important;
 }
 
-footer{
-    margin-top:1.5rem;
-}
-
 ul{
     padding: 0;
     list-style:none;

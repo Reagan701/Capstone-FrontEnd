@@ -5,7 +5,8 @@ export default createStore({
     user:null,
     currentUser: null,
     products: null,
-    singleProduct: null
+    singleProduct: null,
+    allUsers:null
   },
   getters: {
   },
@@ -21,6 +22,9 @@ export default createStore({
     },
     setSingleProduct(state,product){
       state.singleProduct = product;
+    },
+    setAllUsers(state,allUsers){
+      state.allUsers = allUsers;
     }
   },
   actions: {
@@ -35,6 +39,31 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/products/'+payload)
       .then((res)=>res.json())
       .then((data)=>context.commit('setSingleProduct', data.results[0]));
+    },
+    getAllUsers(context){
+      fetch('https://digiverseapi.herokuapp.com/users')
+      .then((res)=>res.json())
+      .then((data)=>context.commit('setAllUsers',data.results))
+    },
+    deleteUser(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/users/'+payload, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=>res.json())
+      .then(()=> context.dispatch('getAllUsers'));
+    },
+    deleteProduct(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/users/'+payload, {
+        method: 'DELETE',
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=> res.json())
+      .then(() => context.dispatch('getProducts'));
     },
     registerUser(context,payload){
       fetch('https://digiverseapi.herokuapp.com/users', {

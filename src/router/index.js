@@ -6,6 +6,10 @@ import RegisterView from '../views/Register.vue';
 import AllProductsView from '../views/Products.vue';
 import SingleProductView from '../views/SingleProduct.vue';
 import AdminView from '../views/Admin.vue'
+import AdminBilling from '../views/AdminBilling.vue';
+import AdminCart from '../views/AdminCart.vue';
+import AdminProducts from '../views/AdminProducts.vue';
+import AdminUsers from '../views/AdminUsers.vue';
 
 const routes = [
   {
@@ -46,6 +50,26 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: AdminView
+  },
+  {
+    path: '/admin/billing',
+    name: 'adminBilling',
+    component: AdminBilling
+  },
+  {
+    path: '/admin/cart',
+    name: 'adminCart',
+    component: AdminCart
+  },
+  {
+    path: '/admin/products',
+    name: 'adminProducts',
+    component: AdminProducts
+  },
+  {
+    path: '/admin/users',
+    name: 'adminUsers',
+    component: AdminUsers
   }
 ]
 

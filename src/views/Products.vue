@@ -1,5 +1,5 @@
 <template>
-  <div class="viewport products container">
+  <div v-if="products" class="viewport products container">
     <h1 class="fw-bold my-4">Our Items</h1>
     <div class="row text-bg-dark">
         <p>Sort By:</p>
@@ -51,6 +51,9 @@
             </div>
         </div>
     </div>
+  </div>
+  <div class="products viewport container d-flex justify-content-center align-items-center flex-column" v-else>
+    <p class="display-1 fw-bold">loading...</p>
   </div>
 </template>
 
