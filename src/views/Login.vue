@@ -46,6 +46,9 @@ export default {
         reset(){
             this.clicked = false;
         }
+    },
+    mounted(){
+        window.scrollTo(0,0);
     }
 }
 </script>

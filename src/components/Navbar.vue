@@ -5,11 +5,13 @@
             <div id="nav" class="fs-5 mx-auto">
                 <router-link class="me-2" to="/">Home</router-link>
                 <router-link class="me-2" to="/about">About</router-link>
+                <router-link class="me-2" to="/products">Products</router-link>
+                <router-link class="me-2" to="/admin">Admin</router-link>
                 <router-link class="me-2" to="/login">Login</router-link>    
                 <router-link to="/register">Register</router-link>    
             </div>
-            <button class="ms-auto btn btn-dark" id="offcanvasButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                Open
+            <button class="btn ms-auto" id="offcanvasButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <i id="nav" class="ms-auto bi bi-person-circle"></i>
             <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbar">
@@ -67,5 +69,10 @@ nav{
     #nav{
         display: none;
     }
+}
+
+#nav:hover{
+    cursor: pointer;
+    color:darkblue;
 }
 </style>

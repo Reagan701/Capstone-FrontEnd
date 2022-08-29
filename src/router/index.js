@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
-import LoginView from '../views/Login.vue'
-import RegisterView from '../views/Register.vue'
+import HomeView from '../views/HomeView.vue';
+import AboutView from '../views/AboutView.vue';
+import LoginView from '../views/Login.vue';
+import RegisterView from '../views/Register.vue';
+import AllProductsView from '../views/Products.vue';
+import SingleProductView from '../views/SingleProduct.vue';
+import AdminView from '../views/Admin.vue'
 
 const routes = [
   {
@@ -27,6 +30,22 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: AllProductsView
+  },
+  {
+    path: '/products/:id',
+    name: 'product',
+    props:true,
+    component: SingleProductView
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView
   }
 ]
 

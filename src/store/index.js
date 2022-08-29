@@ -3,7 +3,9 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     user:null,
-    currentUser: null
+    currentUser: null,
+    products: null,
+    singleProduct: null
   },
   getters: {
   },
@@ -13,9 +15,27 @@ export default createStore({
     },
     setCurrentUser(state,currentUser){
       state.currentUser = currentUser;
+    },
+    setProducts(state,products){
+      state.products = products;
+    },
+    setSingleProduct(state,product){
+      state.singleProduct = product;
     }
   },
   actions: {
+    getProducts(context){
+      fetch('https://digiverseapi.herokuapp.com/products')
+      .then((res)=>res.json())
+      .then((data)=> {
+        context.commit('setProducts',data.results);
+      });
+    },
+    getSingleProduct(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/products/'+payload)
+      .then((res)=>res.json())
+      .then((data)=>context.commit('setSingleProduct', data.results[0]));
+    },
     registerUser(context,payload){
       fetch('https://digiverseapi.herokuapp.com/users', {
         method: 'POST',

@@ -66,6 +66,11 @@ h3{
     font-weight: 700;
 }
 
+footer{
+    padding-top:20px;
+    background-color: #f2f2f2;;
+}
+
 .borderTop{
     border-top: 5px solid black;
     padding-top: 1rem;
