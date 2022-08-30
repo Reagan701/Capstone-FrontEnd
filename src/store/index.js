@@ -6,7 +6,8 @@ export default createStore({
     currentUser: null,
     products: null,
     singleProduct: null,
-    allUsers:null
+    allUsers:null,
+    billing:null
   },
   getters: {
   },
@@ -25,6 +26,9 @@ export default createStore({
     },
     setAllUsers(state,allUsers){
       state.allUsers = allUsers;
+    },
+    setBilling(state,info){
+      state.billing = info
     }
   },
   actions: {
@@ -44,6 +48,22 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/users')
       .then((res)=>res.json())
       .then((data)=>context.commit('setAllUsers',data.results))
+    },
+    getBillingInfo(context){
+      fetch('https://digiverseapi.herokuapp.com/billing')
+      .then((res)=>res.json())
+      .then((data)=>context.commit('setBilling',data.results))
+    },
+    editProduct(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/products/'+payload.prodId, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=>res.json())
+      .then((data)=>console.log(data));
     },
     deleteUser(context,payload){
       fetch('https://digiverseapi.herokuapp.com/users/'+payload, {

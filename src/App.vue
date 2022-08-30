@@ -72,6 +72,19 @@ nav a.router-link-exact-active {
 nav a:hover {
   color: darkblue;
 }
+
+::-webkit-scrollbar{
+  height: 5px;
+  width:5px;
+}
+
+::-webkit-scrollbar-track{
+  color:#2c3e50
+}
+
+::-webkit-scrollbar-thumb{
+  color:black
+}
 </style>
 
 <script>

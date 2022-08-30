@@ -26,10 +26,12 @@
                 <td>{{product.quantity}}</td>
                 <td>{{product.price}}</td>
                 <td>
-                    <button class="adminConfirm">Edit</button>
+                    <button data-bs-toggle="modal" :data-bs-target="`#productEdit`+product.prodId" class="adminConfirm">Edit</button>
+
                     <button data-bs-toggle="modal" :data-bs-target="`#productDelete`+product.prodId" class="adminConfirm">Delete</button>
                 </td>
                 <ProductDeleteModal :product="product"/>
+                <ProductEditModal :product="product"/>
             </tr>
         </tbody>
     </table>
@@ -41,8 +43,9 @@
 
 <script>
 import ProductDeleteModal from '../components/ProductDelete.vue'
+import ProductEditModal from '../components/ProductEdit.vue'
 export default {
-    components: {ProductDeleteModal},
+    components: {ProductDeleteModal,ProductEditModal},
     mounted(){
         window.scrollTo(0,0);
         this.$store.dispatch('getProducts');
