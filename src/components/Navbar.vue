@@ -1,7 +1,7 @@
 <template>
     <nav class="p-0 navbar text-center fixed-top navbar-light">
         <div class="container p-3 mt-1">
-            <a href="#" class="me-auto fs-3 navbar-brand">Digiverse</a>
+            <a href="#" class="me-auto fs-3 text-white navbar-brand">Digiverse</a>
             <div id="nav" class="fs-5 mx-auto">
                 <router-link class="me-2" to="/">Home</router-link>
                 <router-link class="me-2" to="/about">About</router-link>
@@ -47,7 +47,7 @@ export default {
 }
 
 nav{
-    background-color: #f2f2f2;;
+    background-color: #0c0c0c;
 }
 
 .bi{
@@ -74,5 +74,9 @@ nav{
 #nav:hover{
     cursor: pointer;
     color:darkblue;
+}
+
+.navbar-brand{
+    color:greenyellow !important;
 }
 </style>

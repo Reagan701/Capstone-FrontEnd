@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div v-else>
-                <button class="confirm" type="submit">Login</button>
+                <button class="button mx-auto" type="submit">Login</button>
             </div>
         </form>
     </div>
@@ -60,6 +60,7 @@ export default {
 
 h1{
     font-weight: 900;
+    color:greenyellow   
 }
 
 

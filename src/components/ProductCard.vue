@@ -21,7 +21,8 @@ export default {
 .itemcontainer{
     padding:0.5rem;
     margin: 2rem;
-    border:2px solid black;
+    border:2px solid greenyellow;
+    color:white;
     overflow: hidden;
 }
 p{
