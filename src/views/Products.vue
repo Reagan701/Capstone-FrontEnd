@@ -53,12 +53,11 @@
     </div>
   </div>
   <div class="products viewport container d-flex justify-content-center align-items-center flex-column" v-else>
-    <p class="display-1 fw-bold">loading...</p>
   </div>
 </template>
 
 <script>
-import ProductCard from '../components/ProductCard.vue'
+import ProductCard from '../components/ProductCard.vue';
 export default {
     components:{
         ProductCard

@@ -3,7 +3,11 @@
         <h1 class="w-100">Login</h1>
         <form class="w-50 d-flex flex-column" @submit="login">
             <input type="email" @click="reset" v-model="email" required placeholder="email@example.com">
-            <input class="my-5" type="password" required v-model="password" @click="reset" placeholder="password">
+            <div id="pass">
+                <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
+                <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
+                <input id="passwordInput" name="password" class="my-5 w-100" type="password" required v-model="password" @click="reset" placeholder="password">
+            </div>
             <div v-if="clicked">
                 <div v-if="user">
                     <p>Successfully logged in</p>
@@ -25,6 +29,7 @@ export default {
         return{
             email: null,
             password: null,
+            visible: false,
             clicked: false
         }
     },
@@ -49,6 +54,17 @@ export default {
     },
     mounted(){
         window.scrollTo(0,0);
+    },
+    methods:{
+        change(){
+            if(this.visible){
+                this.visible = !this.visible;
+                document.getElementById('passwordInput').type = 'password';
+            }else{
+                this.visible = !this.visible;
+                document.getElementById('passwordInput').type = 'text';
+            }
+        }
     }
 }
 </script>
@@ -63,8 +79,15 @@ h1{
     color:greenyellow   
 }
 
+#pass{
+    position:relative;
+}
 
-*{
-    font-family: 'Roboto',sans-serif;
+#pass i{
+    position:absolute;
+    top:41%;
+    left:93%;
+    color: #5c9100;
+    cursor: pointer;
 }
 </style>

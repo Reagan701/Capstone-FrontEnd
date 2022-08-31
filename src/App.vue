@@ -5,6 +5,11 @@
 </template>
 
 <style>
+
+*{
+  font-family: 'Roboto', sans-serif;
+  
+}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,20 +19,31 @@
 }
 
 input{
-  border: 2px solid greenyellow;
-  color:white;
-  background:transparent;
-  padding-top:0.5rem;
-  padding-left:0.6rem;
-  padding-bottom:0.6rem;
-  width: 100%;
+  border:2px solid transparent;
+  outline: none;
+  border-bottom: 2px solid #757575;
+  padding:5px;
+  color: white;
+  letter-spacing: 1px;
+  transition: all 0.5s linear;
+  background-color: transparent;
 }
+
 input::placeholder{
-  font-family: 'Roboto', sans-serif;
-  color:white
+  color: #757575;
 }
+
+input:focus{
+  border:2px solid greenyellow;
+  color:#76b900;
+}
+
+input:focus::placeholder{
+  color: #76b900
+}
+
 h1{
-    color: greenyellow;
+  color: greenyellow;
 }
 .confirm{
   border: 2px solid greenyellow;
@@ -105,6 +121,7 @@ h1{
 
 .button:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid #0c0c0c;
 }
 
 .button:hover:before {
@@ -123,10 +140,8 @@ h1{
 
 button {
   color: white;
-  text-decoration: none;
-  cursor: pointer;
   outline: none;
-  border: none;
+  border: 2px solid white;
   background: transparent;
 }
 

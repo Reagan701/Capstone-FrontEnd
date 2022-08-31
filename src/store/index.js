@@ -2,12 +2,13 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    user:null,
+    user: null,
     currentUser: null,
     products: null,
     singleProduct: null,
-    allUsers:null,
-    billing:null
+    allUsers: null,
+    billing: null,
+    allCarts: null
   },
   getters: {
   },
@@ -29,6 +30,9 @@ export default createStore({
     },
     setBilling(state,info){
       state.billing = info
+    },
+    setCartInfo(state,info){
+      state.allCarts = info
     }
   },
   actions: {
@@ -53,6 +57,11 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/billing')
       .then((res)=>res.json())
       .then((data)=>context.commit('setBilling',data.results))
+    },
+    getAllCarts(context){
+      fetch('https://digiverseapi.herokuapp.com/cart')
+      .then((res)=>res.json())
+      .then((data)=>context.commit('setCartInfo',data.results))
     },
     editProduct(context,payload){
       fetch('https://digiverseapi.herokuapp.com/products/'+payload.prodId, {

@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div v-else>
-                <button class="confirm" type="submit">Register</button>
+                <button class="button mx-auto" type="submit">Register</button>
             </div>
         </form>
     </div>
