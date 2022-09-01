@@ -86,7 +86,7 @@ h1{
 #pass i{
     position:absolute;
     top:41%;
-    left:93%;
+    left:96%;
     color: #5c9100;
     cursor: pointer;
 }

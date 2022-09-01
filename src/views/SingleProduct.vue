@@ -1,5 +1,5 @@
 <template>
-  <div class="viewport singleProduct">
+  <div class="viewport singleProduct container">
     
     <div v-if="singleProduct" class="row">
         <div class="col-md-5">
