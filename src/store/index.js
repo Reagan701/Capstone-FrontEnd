@@ -8,7 +8,8 @@ export default createStore({
     singleProduct: null,
     allUsers: null,
     billing: null,
-    allCarts: null
+    allCarts: null,
+    productCategory: null
   },
   getters: {
   },
@@ -33,6 +34,9 @@ export default createStore({
     },
     setCartInfo(state,info){
       state.allCarts = info
+    },
+    setProductCategory(state,info){
+      state.productCategory = info;
     }
   },
   actions: {
@@ -46,7 +50,12 @@ export default createStore({
     getSingleProduct(context,payload){
       fetch('https://digiverseapi.herokuapp.com/products/'+payload)
       .then((res)=>res.json())
-      .then((data)=>context.commit('setSingleProduct', data.results[0]));
+      .then((data)=>
+      {
+        context.commit('setSingleProduct', data.results[0])
+        context.dispatch('getProductByCategory', data.results[0].category);
+      }
+      );
     },
     getAllUsers(context){
       fetch('https://digiverseapi.herokuapp.com/users')
@@ -131,6 +140,11 @@ export default createStore({
       .then((data)=> {
         context.commit('setCurrentUser', data.decodedUser.user)
       });
+    },
+    getProductByCategory(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/productCategory/'+ payload)
+      .then((res)=>res.json())
+      .then((data)=> context.commit('setProductCategory', data.results));
     }
   },
   modules: {

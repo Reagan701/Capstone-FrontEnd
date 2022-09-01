@@ -18,7 +18,7 @@
   background-color:#0c0c0c;
 }
 
-input{
+input, textarea{
   border:2px solid transparent;
   outline: none;
   border-bottom: 2px solid #757575;
@@ -27,15 +27,18 @@ input{
   letter-spacing: 1px;
   transition: all 0.5s linear;
   background-color: transparent;
+  font-weight: 900;
 }
 
 input::placeholder{
   color: #757575;
+  font-weight: 100;
 }
 
 input:focus{
   border:2px solid greenyellow;
   color:#76b900;
+  font-weight: 900;
 }
 
 input:focus::placeholder{
@@ -128,20 +131,20 @@ h1{
   border-color:  #76b900;
   height: 100%;
   transform: translateX(0);
-  transition: .3s transform linear, .3s height linear .3s;
+  transition: .1s transform linear, .1s height linear .1s;
 }
 
 .button:hover:after {
   border-color:     #76b900;
   height: 100%;
   transform: translateX(0);
-  transition: .3s transform linear, .3s height linear .5s;
+  transition: .1s transform linear, .1s height linear .1s;
 }
 
 button {
   color: white;
   outline: none;
-  border: 2px solid white;
+  border: 2px solid #757575;
   background: transparent;
 }
 

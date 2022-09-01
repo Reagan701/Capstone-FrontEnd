@@ -7,13 +7,14 @@
                 <router-link class="me-2" to="/about">About</router-link>
                 <router-link class="me-2" to="/products">Products</router-link>
                 <router-link class="me-2" to="/admin">Admin</router-link>
-                <router-link class="me-2" to="/login">Login</router-link>    
+                <router-link class="me-2" to="/contact">Contact</router-link>
+                <router-link class="me-2" to="/login">Login</router-link>
                 <router-link to="/register">Register</router-link>    
             </div>
             <button class="btn ms-auto" id="offcanvasButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <i id="nav" class="ms-auto bi bi-person-circle"></i>
+            <i id="nav" data-bs-toggle="offcanvas" data-bs-target="#cart" class="ms-auto bi bi-person-circle"></i>
             <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbar">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navbar</h5>
@@ -73,7 +74,11 @@ nav{
 
 #nav:hover{
     cursor: pointer;
-    color:darkblue;
+    color:#76b900;
+}
+
+#nav{
+    color: white
 }
 
 .navbar-brand{

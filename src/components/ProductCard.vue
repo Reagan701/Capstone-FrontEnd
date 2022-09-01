@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props:['product']
+    props:['product'],
 }
 </script>
 
@@ -24,6 +24,7 @@ export default {
     border:2px solid greenyellow;
     color:white;
     overflow: hidden;
+    box-shadow: 0 0 5px greenyellow;
 }
 p{
     padding: 0;

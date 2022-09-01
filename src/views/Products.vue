@@ -5,7 +5,7 @@
         <p>Sort By:</p>
     </div>
     <div class="row">
-        <div class="col-md-2 text-bg-dark">
+        <div class="col-md-3 col-lg-2 text-bg-dark">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9 col-lg-10">
             <div class="row">
                 <ProductCard v-for="product in products" :key="product.prodId" :product="product"/>
             </div>
@@ -53,14 +53,16 @@
     </div>
   </div>
   <div class="products viewport container d-flex justify-content-center align-items-center flex-column" v-else>
+    <Loader/>
   </div>
 </template>
 
 <script>
 import ProductCard from '../components/ProductCard.vue';
+import Loader from '../components/Loader.vue';
 export default {
     components:{
-        ProductCard
+        ProductCard,Loader
     },
     computed:{
         products(){
@@ -69,6 +71,7 @@ export default {
     },
     mounted(){
         this.$store.dispatch('getProducts');
+        this.$store.commit('setSingleProduct',null)
     }
 }
 </script>

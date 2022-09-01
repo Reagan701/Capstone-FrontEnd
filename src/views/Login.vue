@@ -90,4 +90,11 @@ h1{
     color: #5c9100;
     cursor: pointer;
 }
+i:active{
+    transform: scale(0.9);
+}
+
+input{
+    letter-spacing: 1px;
+}
 </style>

@@ -10,6 +10,7 @@ import AdminBilling from '../views/AdminBilling.vue';
 import AdminCart from '../views/AdminCart.vue';
 import AdminProducts from '../views/AdminProducts.vue';
 import AdminUsers from '../views/AdminUsers.vue';
+import Contact from '../views/Contact.vue';
 
 const routes = [
   {
@@ -70,6 +71,11 @@ const routes = [
     path: '/admin/users',
     name: 'adminUsers',
     component: AdminUsers
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: Contact
   }
 ]
 
