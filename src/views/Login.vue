@@ -1,26 +1,33 @@
 <template>
     <div class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
-        <h1 class="w-100">Login</h1>
-        <form class="w-50 d-flex flex-column" @submit="login">
+        <h1 class="w-100 mb-5">Login</h1>
+        <form class="w-75 d-flex flex-column" @submit="login">
             <input type="email" @click="reset" v-model="email" required placeholder="email@example.com">
             <div id="pass">
                 <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
                 <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
-                <input id="passwordInput" name="password" class="my-5 w-100" type="password" required v-model="password" @click="reset" placeholder="password">
+                <input id="passwordInput" name="password" class="my-5 w-100" type="password" required v-model="password" @input="reset" @change="reset" @click="reset" placeholder="password">
             </div>
-            <div v-if="clicked">
-                <div v-if="user">
-                    <p>Successfully logged in</p>
+            <div v-if="clicked && !currentUser">
+                <div v-if="!user && !loginError">
+                    <p>Checking..</p>
+                </div>
+                <div v-else-if="!loginError">
+                    <p>Verifying...</p>
                 </div>
                 <div v-else>
-                    <p>Checking...</p>
+                    <p class="fw-bold">{{loginError}}</p>
                 </div>
+            </div>
+            <div v-else-if="clicked && currentUser">
+                <p class="fw-bold">Welcome {{currentUser.firstName}} {{currentUser.lastName}}</p>
             </div>
             <div v-else>
                 <button class="button mx-auto" type="submit">Login</button>
             </div>
         </form>
     </div>
+    
 </template>
 
 <script>
@@ -36,6 +43,12 @@ export default {
     computed:{
         user(){
             return this.$store.state.user;
+        },
+        currentUser(){
+            return this.$store.state.currentUser;
+        },
+        loginError(){
+            return this.$store.state.loginError;
         }
     },
     methods:{
@@ -49,13 +62,11 @@ export default {
             this.$store.dispatch('loginUser', payload);
         },
         reset(){
-            this.clicked = false;
-        }
-    },
-    mounted(){
-        window.scrollTo(0,0);
-    },
-    methods:{
+            if(!this.currentUser){
+                this.clicked = false;
+                this.$store.commit('setLoginError',null);
+            }
+        },
         change(){
             if(this.visible){
                 this.visible = !this.visible;
@@ -65,6 +76,9 @@ export default {
                 document.getElementById('passwordInput').type = 'text';
             }
         }
+    },
+    mounted(){
+        window.scrollTo(0,0);
     }
 }
 </script>
@@ -97,4 +111,9 @@ i:active{
 input{
     letter-spacing: 1px;
 }
+
+p{
+    color:greenyellow;
+}
+
 </style>

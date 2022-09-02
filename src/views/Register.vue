@@ -1,24 +1,16 @@
 <template>
     <div class="viewport register container d-flex justify-content-center align-items-center flex-column">
         <h1 class="fw-bold w-100">Register</h1>
-        <form class="w-100 d-flex flex-column" @submit="register">
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="text" @click="reset" v-model="firstName" required placeholder="first name">
+        <form class="w-75 d-flex flex-column" @submit="register">
+            <input type="text" @click="reset" v-model="firstName" required placeholder="first name">
+                <input type="text" required v-model="lastName" @click="reset" placeholder="last name">
+                <input type="number" required v-model="phoneNumber" @click="reset" placeholder="phoneNumber">
+                <input type="email" required v-model="email" @click="reset" placeholder="email@example.com">
+                <div id="pass">
+                    <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
+                    <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
+                    <input id="passwordInput" type="password" required v-model="password" @click="reset" class="w-100" placeholder="password">
                 </div>
-                <div class="col-md-6">
-                    <input type="text" required v-model="lastName" @click="reset" placeholder="last name">
-                </div>
-                <div class="col-md-12">
-                    <input type="number" required v-model="phoneNumber" @click="reset" placeholder="phoneNumber">
-                </div>
-                <div class="col-md-6">
-                    <input type="email" required v-model="email" @click="reset" placeholder="email@example.com">
-                </div>
-                <div class="col-md-6">
-                    <input type="password" required v-model="password" @click="reset" placeholder="password">
-                </div>
-            </div>
             <div v-if="clicked">
                 <div v-if="user">
                     <p>Successfully logged in</p>
@@ -43,6 +35,7 @@ export default {
             phoneNumber:null,
             email: null,
             password: null,
+            visible: false,
             clicked: false
         }
     },
@@ -52,7 +45,7 @@ export default {
         }
     },
     methods:{
-        login(e){
+        register(e){
             e.preventDefault();
             this.clicked = true;
             const payload = {
@@ -66,6 +59,15 @@ export default {
         },
         reset(){
             this.clicked = false;
+        },
+        change(){
+            if(this.visible){
+                this.visible = !this.visible;
+                document.getElementById('passwordInput').type = 'password';
+            }else{
+                this.visible = !this.visible;
+                document.getElementById('passwordInput').type = 'text';
+            }
         }
     },
     mounted(){
@@ -83,6 +85,21 @@ export default {
 
 *{
     font-family: 'Roboto',sans-serif;
+}
+
+#pass{
+    position:relative;
+}
+
+#pass i{
+    position:absolute;
+    top:27%;
+    left:96%;
+    color: #5c9100;
+    cursor: pointer;
+}
+i:active{
+    transform: scale(0.9);
 }
 
 </style>

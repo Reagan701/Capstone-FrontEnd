@@ -23,7 +23,7 @@
                 <p>{{singleProduct.prodDescription}}</p>
                 <div class="d-flex justify-content-evenly ms-auto flex-column">
                     <p>{{singleProduct.price}}</p>
-                    <button class="btn btn-light">Add to cart</button>
+                    <button @click="addToCart" class="btn btn-light">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -67,10 +67,15 @@ export default {
         },
         reset(){
             document.getElementById('mainImg').src = this.$store.state.singleProduct.prodImg
+        },
+        addToCart(){
+            
         }
     },
     watch:{
         $route(to,from){
+            console.log(to)
+            console.log(from)
             window.scrollTo(0,0);
             this.$store.commit('setSingleProduct',null);
             this.$store.dispatch('getSingleProduct', to.params.id);

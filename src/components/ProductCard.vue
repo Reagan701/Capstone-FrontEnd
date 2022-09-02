@@ -19,7 +19,7 @@ export default {
 <style scoped>
 
 .itemcontainer{
-    padding:0.5rem;
+    padding:0.7rem;
     margin: 2rem;
     border:2px solid greenyellow;
     color:white;
@@ -33,10 +33,12 @@ p{
 
 .img-fluid:hover{
     cursor:pointer;
-
 }
 
 .img-fluid{
     transition: all 0.1s linear;
+    width:200px;
+    aspect-ratio: 1;
+    object-fit: contain;
 }
 </style>

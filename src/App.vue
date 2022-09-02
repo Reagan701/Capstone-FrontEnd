@@ -32,7 +32,7 @@ input, textarea{
 
 input::placeholder{
   color: #757575;
-  font-weight: 100;
+  font-weight: 900;
 }
 
 input:focus{

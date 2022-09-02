@@ -12,7 +12,8 @@
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
                 <th scope="col">
-                    ADD
+                    <p>ADD</p><button data-bs-target="#addProduct" data-bs-toggle="modal" class="button">Button</button>
+                    <ProductAddModal/>
                 </th>
             </tr>
         </thead>
@@ -37,15 +38,17 @@
     </table>
   </div>
   <div v-else class="viewport adminProducts container d-flex justify-content-center align-items-center">
-    <p class="fs-1 fw-bold">loading...</p>
+    <Loader/>
   </div>
 </template>
 
 <script>
 import ProductDeleteModal from '../components/ProductDelete.vue'
 import ProductEditModal from '../components/ProductEdit.vue'
+import ProductAddModal from '../components/ProductAdd.vue'
+import Loader from '../components/Loader.vue'
 export default {
-    components: {ProductDeleteModal,ProductEditModal},
+    components: {Loader,ProductDeleteModal,ProductEditModal, ProductAddModal},
     mounted(){
         window.scrollTo(0,0);
         this.$store.dispatch('getProducts');

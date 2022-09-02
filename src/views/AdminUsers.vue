@@ -32,14 +32,15 @@
     </table>
   </div>
   <div v-else class="viewport adminUsers container d-flex justify-content-center align-items-center flex-column">
-    <p class="fs-1 fw-bold">loading...</p>
+    <Loader/>
   </div>
 </template>
 
 <script>
 import UserDeleteModal from '../components/UserDeleteModal.vue'
+import Loader from '../components/Loader.vue'
 export default {
-    components:{UserDeleteModal},
+    components:{UserDeleteModal,Loader},
     mounted(){
         window.scrollTo(0,0);
         this.$store.dispatch('getAllUsers')

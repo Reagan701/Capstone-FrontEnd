@@ -1,6 +1,6 @@
 <template>
     <div class="viewport contact container d-flex justify-content-center align-items-center flex-column gap-5">
-        <h1 class="w-100">Contact Us</h1>
+        <h1 class="w-100 mb-5 pb-5">Contact Us</h1>
         <form class="w-100 row" @submit="alert('formspree')">
             <div class="col-md-6">
                 <input type="text" class="w-100" name="Name" required placeholder="name">
@@ -11,7 +11,7 @@
             <div class="col-md-12 my-5">
                 <textarea class="w-100" name="message" cols="30" rows="3" style="resize:none;" placeholder="tell us something"></textarea>
             </div>
-            <button class="mx-auto" type="submit">
+            <button class="button mx-auto" type="submit">
                 <div id="sendHolder">
                     <i class="bi bi-send"></i>
                 </div>
@@ -46,7 +46,7 @@ button{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border: 1px solid white;
+    border: 2px solid white;
     outline: none;
     overflow: hidden;
     transition: all 0.2s;
@@ -64,13 +64,13 @@ button span{
 }
 
 button:hover i{
-    transform: translateX(120%) rotate(45deg);
+    transform: translateX(400%) rotate(45deg);
 }
 button:hover #sendHolder{
     animation: float 1.5s ease-in-out infinite alternate;
 }
 button:hover span{
-    transform: translateX(300%);
+    transform: translateX(-90%);
 }
 
 @keyframes float {
@@ -88,6 +88,7 @@ textarea::placeholder{
     font-weight: 100;
     transform: translateY(180%);
     transition: all 0.2s linear;
+    font-weight: 900;
 }
 textarea:focus{
     border:2px solid greenyellow;

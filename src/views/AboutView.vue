@@ -1,7 +1,7 @@
 <template>
-  <div class="viewport about">
+  <div class="viewport about container">
     <h1>This is an about page</h1>
-    <Loader/>
+      <Loader />
   </div>
 </template>
   <script>
