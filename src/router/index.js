@@ -11,6 +11,8 @@ import AdminCart from '../views/AdminCart.vue';
 import AdminProducts from '../views/AdminProducts.vue';
 import AdminUsers from '../views/AdminUsers.vue';
 import Contact from '../views/Contact.vue';
+import SingleCart from '../views/SingleCart.vue';
+import Checkout from '../views/Checkout.vue';
 
 const routes = [
   {
@@ -76,6 +78,16 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: Contact
+  },
+  {
+    path: '/admin/cart/:id',
+    name: 'singleCart',
+    component: SingleCart
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: Checkout
   }
 ]
 

@@ -1,11 +1,10 @@
 <template>
-  <div class="col-md-4">
-    <div class="itemcontainer">
-        <router-link :to="{name:'product', params:{id:product.prodId}}" >
-            <img class="img-fluid" :src="product.prodImg" :alt="product.prodName">
-        </router-link>
+  <div class="col-md-6 py-3">
+    <div class="itemcontainer my-2">
+        <img class="img-fluid" :src="product.prodImg" :alt="product.prodName">
         <p class="pt-lg-3 pt-sm-2">{{product.prodName}}</p>
-        <p>R {{product.price}}</p>
+        <p>R{{product.price}}</p>
+        <button @click="removeFromCart" class="button">Remove</button>
     </div>
   </div>
 </template>
@@ -13,14 +12,17 @@
 <script>
 export default {
     props:['product'],
+    methods:{
+        removeFromCart(){
+            this.$store.dispatch('removeFromCart', this.product);
+        }
+    }
 }
 </script>
 
 <style scoped>
-
 .itemcontainer{
     padding:0.7rem;
-    margin: 2rem;
     border:2px solid greenyellow;
     color:white;
     overflow: hidden;

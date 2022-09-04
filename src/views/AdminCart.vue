@@ -22,15 +22,20 @@
     </table>
     </div>
     <div class="viewport adminCart container d-flex justify-content-center align-items-center">
-        <p class="fw-bold fs-1">loading...</p>
+        <Loader/>
     </div>
 </template>
 
 <script>
+import Loader from '../components/Loader.vue'
 export default {
+    components:{
+        Loader
+    },
     mounted(){
         window.scrollTo(0,0);
         this.$store.dispatch('getAllCarts');
+        this.$store.commit('setSingleCartInfo',null);
     },
     computed:{
         carts(){

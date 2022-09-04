@@ -41,10 +41,13 @@
             </div>
         </div>
     </nav>
+    <Cart :currentUser="user"/>
 </template>
 
 <script>
+import Cart from '../components/Cart.vue'
 export default {
+    components: {Cart},
     computed:{
         user(){
             return this.$store.state.currentUser
@@ -83,6 +86,10 @@ nav{
     #nav{
         display: none;
     }
+}
+
+a{
+    text-decoration: none;
 }
 
 #nav:hover{

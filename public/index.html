@@ -6,16 +6,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <style>
       .swal2-icon.swal2-error [class^='swal2-x-mark-line']{
-        background-color:greenyellow !important
+        background-color: #76b900 !important
       }
       .swal2-icon.swal2-error{
-      color:greenyellow !important;
-      border-color:greenyellow !important;
+      color: #76b900 !important;
+      border-color: #76b900 !important;
     }
     .swal2-styled.swal2-confirm{
       background-color: transparent !important;
       border-color: white !important;
     }
+    .swal2-styled:focus{
+      transform: scale(1.1);
+      box-shadow: 0 0 0 1px #19191a, 0 0 0 3px greenyellow !important;
+    }
+    .swal2-styled{
+      transition: all 0.5s linear;
+      box-shadow: 0 0 0 3px greenyellow !important;
+    }
+    .swal2-icon.swal2-success [class^='swal2-success-line']{
+      background-color:#76b900 !important;
+    } 
+    .swal2-icon.swal2-success .swal2-success-ring{
+      border: 0.25em solid #76b900 !important;
+    }
+
+    html,body{
+      overflow-x: hidden;
+    }
+   
     </style>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">

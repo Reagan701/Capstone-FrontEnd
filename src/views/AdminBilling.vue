@@ -27,15 +27,21 @@
         </table>
     </div>
     <div v-else class="viewport adminBilling container d-flex justify-content-center align-items-center flex-column">
-        <p class="fw-bold fs-1">loading..</p>
+        <Loader/>
     </div>
 </template>
 
 <script>
+import Loader from '../components/Loader.vue'
 export default {
+    components:{
+        Loader
+    },
     mounted(){
-        window.scrollTo(0,0);
-        this.$store.dispatch('getBillingInfo');
+        setTimeout(() =>{
+            window.scrollTo(0,0);
+            this.$store.dispatch('getBillingInfo');
+        },500)
     },
     computed: {
         billing(){

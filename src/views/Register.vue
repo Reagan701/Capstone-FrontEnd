@@ -11,13 +11,19 @@
                     <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
                     <input id="passwordInput" type="password" required v-model="password" @click="reset" class="w-100" placeholder="password">
                 </div>
-            <div v-if="clicked">
-                <div v-if="user">
-                    <p>Successfully logged in</p>
+            <div v-if="clicked && !currentUser">
+                <div v-if="!user && !registerError">
+                    <p>Checking..</p>
+                </div>
+                <div v-else-if="!registerError">
+                    <p>Verifying...</p>
                 </div>
                 <div v-else>
-                    <p>Checking...</p>
+                    <p class="fw-bold">{{registerError}}</p>
                 </div>
+            </div>
+            <div v-else-if="clicked && currentUser">
+                <p class="fw-bold">Welcome {{currentUser.firstName}} {{currentUser.lastName}}</p>
             </div>
             <div v-else>
                 <button class="button mx-auto" type="submit">Register</button>
@@ -42,6 +48,12 @@ export default {
     computed:{
         user(){
             return this.$store.state.user;
+        },
+        currentUser(){
+            return this.$store.state.currentUser;
+        },
+        registerError(){
+            return this.$store.state.registerError;
         }
     },
     methods:{
@@ -55,10 +67,13 @@ export default {
                 userEmail: this.email,
                 userPassword: this.password
             };
-            this.$store.dispatch('RegisterUser', payload);
+            this.$store.dispatch('registerUser', payload);
         },
         reset(){
-            this.clicked = false;
+            if(!this.currentUser){
+                this.clicked = false;
+                this.$store.commit('setRegisterError',null);
+            }
         },
         change(){
             if(this.visible){

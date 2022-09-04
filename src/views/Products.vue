@@ -2,7 +2,12 @@
   <div v-if="products" class="viewport products container">
     <h1 class="fw-bold my-4">Our Items</h1>
     <div class="row text-bg-dark">
-        <p>Sort By:</p>
+        <div class="col-md-6">
+            <p>Sort By:</p>
+        </div>
+        <div class="col-md-6">
+            <input type="text" placeholder="search for anything" v-model="search">
+        </div>
     </div>
     <div class="row">
         <div class="col-md-3 col-lg-2 text-bg-dark">
@@ -48,9 +53,22 @@ export default {
     components:{
         ProductCard,Loader
     },
+    data(){
+        return{
+            search: ''
+        }
+    },
     computed:{
         products(){
-            return this.$store.state.products;
+            return this.$store.state.products?.filter((x)=> {
+                let isMatch = true;
+
+                if(!x.prodName?.toLowerCase().includes(this.search.toLowerCase())){
+                    isMatch = false;
+                }
+
+                return isMatch;
+            });
         }
     },
     mounted(){

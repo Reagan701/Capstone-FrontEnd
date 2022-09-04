@@ -1,8 +1,10 @@
 <template>
     <div class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
-        <h1 class="w-100 mb-5">Login</h1>
-        <form class="w-75 d-flex flex-column" @submit="login">
-            <input type="email" @click="reset" v-model="email" required placeholder="email@example.com">
+        <h1 class="w-100 mb-5 pb-5">Login</h1>
+        <form class="w-100 row" @submit="login">
+            <div>
+                <input type="email" class="w-100" @click="reset" v-model="email" required placeholder="email@example.com">
+            </div>
             <div id="pass">
                 <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
                 <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
@@ -20,7 +22,7 @@
                 </div>
             </div>
             <div v-else-if="clicked && currentUser">
-                <p class="fw-bold">Welcome {{currentUser.firstName}} {{currentUser.lastName}}</p>
+                <p class="fw-bold">Welcome back {{currentUser.firstName}} {{currentUser.lastName}}</p>
             </div>
             <div v-else>
                 <button class="button mx-auto" type="submit">Login</button>

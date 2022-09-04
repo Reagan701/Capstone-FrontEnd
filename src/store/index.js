@@ -1,3 +1,4 @@
+import { toRaw } from 'vue';
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -6,11 +7,15 @@ export default createStore({
     currentUser: null,
     products: null,
     loginError: null,
+    registerError: null,
     singleProduct: null,
     allUsers: null,
     billing: null,
     allCarts: null,
-    productCategory: null
+    productCategory: null,
+    currentCart: null,
+    cartTotal: 0,
+    singleCart: null
   },
   getters: {
   },
@@ -41,6 +46,18 @@ export default createStore({
     },
     setLoginError(state,error){
       state.loginError = error;
+    },
+    setRegisterError(state,error){
+      state.registerError = error;
+    },
+    setCurrentCart(state,cart){
+      state.currentCart = cart
+    },
+    setCartTotal(state,total){
+      state.cartTotal = total;
+    },
+    setSingleCartInfo(state,info){
+      state.singleCart = info
     }
   },
   actions: {
@@ -98,7 +115,7 @@ export default createStore({
       .then(()=> context.dispatch('getAllUsers'));
     },
     deleteProduct(context,payload){
-      fetch('https://digiverseapi.herokuapp.com/users/'+payload, {
+      fetch('https://digiverseapi.herokuapp.com/products/'+payload, {
         method: 'DELETE',
         headers:{
           'Content-type': 'application/json; charset=UTF-8'
@@ -116,7 +133,19 @@ export default createStore({
         }
       })
       .then((res)=>res.json())
-      .then((data)=>console.log(data));
+      .then((data)=>{
+        if(data.message){
+          context.commit('setRegisterError',data.message)
+          Swal.fire({
+            icon:'error',
+            title:data.message,
+            padding:'1rem'
+            }
+          )
+        }else{
+          context.dispatch('loginUser', payload);
+        }
+      });
     },
     loginUser(context,payload){
       fetch('https://digiverseapi.herokuapp.com/users', {
@@ -159,6 +188,7 @@ export default createStore({
           }
         )
         context.commit('setCurrentUser', data.decodedUser.user)
+        context.dispatch('getCurrentCart')
       });
     },
     getProductByCategory(context,payload){
@@ -176,6 +206,54 @@ export default createStore({
       })
       .then((res)=>res.json())
       .then((data)=> console.log(data));
+    },
+    addToCart(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=> res.json())
+      .then(()=> context.dispatch('getCurrentCart'));
+    },
+    getCurrentCart(context){
+      fetch('https://digiverseapi.herokuapp.com/cart/'+ context.state.currentUser.userID)
+      .then((res)=> res.json())
+      .then((data)=> {
+        context.commit('setCurrentCart',JSON.parse(data.results[0].cartItems));
+        context.dispatch('getCartTotal')
+      });
+    },
+    getCartTotal(context){
+      const cart = toRaw(context.state.currentCart);
+      let total = 0;
+      for(let i = 0; i<cart.length;i++){
+        total += cart[i].price;
+      }
+      context.commit('setCartTotal',total);
+    },
+    removeFromCart(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID+'/cartItems/'+payload.prodId, {
+        method: 'DELETE',
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=>res.json())
+      .then((data)=> {
+        console.log(data);
+        context.dispatch('getCurrentCart');
+      })
+    },
+    getSingleCartInfo(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/usercart/'+ payload)
+      .then((res)=> res.json())
+      .then((data)=> {
+        console.log(data.results[0])
+        context.commit('setSingleCartInfo', data.results[0]);
+      });
     }
   },
   modules: {

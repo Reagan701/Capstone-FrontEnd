@@ -46,7 +46,7 @@ button{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border: 2px solid white;
+    border: 2px solid #757575;
     outline: none;
     overflow: hidden;
     transition: all 0.2s;
@@ -64,13 +64,13 @@ button span{
 }
 
 button:hover i{
-    transform: translateX(400%) rotate(45deg);
+    transform: translateX(310%) rotate(45deg);
 }
 button:hover #sendHolder{
     animation: float 1.5s ease-in-out infinite alternate;
 }
 button:hover span{
-    transform: translateX(-90%);
+    transform: translateX(-80%);
 }
 
 @keyframes float {

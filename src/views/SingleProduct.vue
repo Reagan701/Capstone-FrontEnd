@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-7">
             <img :src="singleProduct.prodImg" id="mainImg" class="img-fluid" :alt="singleProduct.prodName">
-            <div class="d-flex">
+            <!-- <div class="d-flex">
                 <div @mouseleave="reset" @mouseenter="changeImg(2)" class="relatedContainer w-50 position-relative">
                     <div class="cover"></div>
                     <img style="border-right:4px solid #0c0c0c" :src="JSON.parse(singleProduct.relatedImages).image1" id="2" class="related" alt="image1">
@@ -12,7 +12,7 @@
                     <div class="cover"></div>
                     <img style="border-left:4px solid #0c0c0c" :src="JSON.parse(singleProduct.relatedImages).image2" id="3" class="related" alt="image2">
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-md-4 ms-auto bg-dark">
             <div class="d-flex justify-content-evenly align-items-center flex-column h-100">
@@ -69,13 +69,11 @@ export default {
             document.getElementById('mainImg').src = this.$store.state.singleProduct.prodImg
         },
         addToCart(){
-            
+            this.$store.dispatch('addToCart',this.singleProduct)
         }
     },
     watch:{
         $route(to,from){
-            console.log(to)
-            console.log(from)
             window.scrollTo(0,0);
             this.$store.commit('setSingleProduct',null);
             this.$store.dispatch('getSingleProduct', to.params.id);
@@ -95,13 +93,11 @@ export default {
     color:White !important;
 }
 
-p{
-    margin:0;
-}
+
 
 .related{
-    width: 100%;
-    height: 100%;
+    width: 268px !important; 
+    height: 184px !important;
     margin-top:8px;
 }
 
@@ -119,9 +115,44 @@ p{
     opacity: 0;
 }
 
+/* 516x344 */
+
 .heading{
     animation: pulse 3s linear infinite alternate;
 }
+
+.img-fluid{
+    width:1000px !important;
+    height: 497px !important;
+    object-fit: cover;
+}
+
+@media screen and (max-width:1199px) {
+    .img-fluid{
+        width:1000px !important;
+        height: 358px !important;
+        object-fit: cover;
+    }
+    
+}
+@media screen and (max-width:767px) {
+    .img-fluid{
+        width:516px !important;
+        height: 344px !important;
+        object-fit: cover;
+    }
+    
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+    .img-fluid{
+        width:1000px !important;
+        height: 265px !important;
+        object-fit: cover;
+    }
+    
+}
+
+/* 746 497 */
 
 @keyframes pulse {
     0%{transform: scale(1.1);}

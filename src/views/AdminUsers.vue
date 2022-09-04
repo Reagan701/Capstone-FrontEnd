@@ -24,7 +24,11 @@
                 <td>{{user.userEmail}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td>{{user.userRole}}</td>
-                <td><button class="adminConfirm">Cart</button></td>
+                <td>
+                    <router-link :to="{name:'singleCart', params:{id:user.userID}}">
+                        <button class="adminConfirm">Cart</button>
+                    </router-link>
+                </td>
                 <td><button data-bs-toggle="modal" :data-bs-target="`#userDelete`+user.userID" class="adminConfirm">Delete</button></td>
                 <UserDeleteModal :user="user"/>
             </tr>
@@ -44,6 +48,7 @@ export default {
     mounted(){
         window.scrollTo(0,0);
         this.$store.dispatch('getAllUsers')
+        this.$store.commit('setSingleCartInfo', null)
     },
     computed:{
         users(){
@@ -58,4 +63,16 @@ export default {
     padding-top:84px;
     font-family: 'Roboto',sans-serif;
 }
+
+table{
+    table-layout: fixed;
+}
+
+@media screen and (max-width:992px){
+    tr{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 </style>

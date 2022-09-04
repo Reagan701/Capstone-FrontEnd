@@ -10,7 +10,7 @@
                 <form @submit="addProduct" class="row w-75 mx-auto">
                     <input placeholder="name" class="w-100 my-3" v-model="prodName" type="text">
                     <select class="my-3" v-model="category">
-                        <option value="Accessory">Accessory</option>
+                        <option selected value="Accessory">Accessory</option>
                         <option value="Console">Console</option>
                     </select>
                     <input placeholder="image link" class="w-100 my-3" v-model="prodImg" type="text">
@@ -35,7 +35,7 @@ export default {
             prodName: null,
             prodImg: null,
             prodDescription: null,
-            category: 'Category',
+            category: 'Accessory',
             quantity: null,
             price: null
         }

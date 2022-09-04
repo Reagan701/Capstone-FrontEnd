@@ -1,10 +1,28 @@
 <template>
   <Navbar/>
-  <router-view/>
+  <router-view v-slot="{Component}">
+    <transition name="route" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
   <Footer />
 </template>
 
 <style>
+
+p{
+  margin:0;
+}
+
+.offcanvas{
+  background-color: #0c0c0c;
+}
+
+.offcanvas-header{
+  margin-right:15px;
+  margin-left:15px;
+  border-bottom: 2px solid #757575;
+}
 
 *{
   font-family: 'Roboto', sans-serif;
@@ -134,6 +152,12 @@ h1{
   transition: .1s transform linear, .1s height linear .1s;
 }
 
+tr{
+  border-color:greenyellow;
+  padding-top:6px;
+  padding-bottom:6px;
+}
+
 .button:hover:after {
   border-color:     #76b900;
   height: 100%;
@@ -164,17 +188,16 @@ nav a:hover {
   color: #76b900;
 }
 
-/* ::-webkit-scrollbar{
-  height: 5px;
-  width:5px;
-} */
+::-webkit-scrollbar{
+  width:10px;
+}
 
 ::-webkit-scrollbar-track{
-  color:#2c3e50
+  background-color:white;
 }
 
 ::-webkit-scrollbar-thumb{
-  color:black
+  background-color:greenyellow;
 }
 </style>
 
