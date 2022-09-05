@@ -1,5 +1,5 @@
 <template>
-    <div class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
+    <div v-if="!currentUser" class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
         <h1 class="w-100 mb-5 pb-5">Login</h1>
         <form class="w-100 row" @submit="login">
             <div>
@@ -12,22 +12,25 @@
             </div>
             <div v-if="clicked && !currentUser">
                 <div v-if="!user && !loginError">
-                    <p>Checking..</p>
+                    <h2 class="fw-bold text-white">Checking..</h2>
                 </div>
                 <div v-else-if="!loginError">
-                    <p>Verifying...</p>
+                    <h2 class="fw-bold text-white">Verifying...</h2>
                 </div>
                 <div v-else>
-                    <p class="fw-bold">{{loginError}}</p>
+                    <h2 class="fw-bold text-white">{{loginError}}</h2>
                 </div>
-            </div>
-            <div v-else-if="clicked && currentUser">
-                <p class="fw-bold">Welcome back {{currentUser.firstName}} {{currentUser.lastName}}</p>
             </div>
             <div v-else>
                 <button class="button mx-auto" type="submit">Login</button>
             </div>
         </form>
+    </div>
+    <div v-else class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
+        <h1 class="fw-bold">Welcome back {{currentUser.firstName}} {{currentUser.lastName}}</h1>
+        <router-link to="/products" class="w-25">
+            <button class="button w-100">View our Products</button>
+        </router-link>
     </div>
     
 </template>
@@ -93,6 +96,10 @@ export default {
 h1{
     font-weight: 900;
     color:greenyellow   
+}
+
+a{
+    text-decoration: none;
 }
 
 #pass{

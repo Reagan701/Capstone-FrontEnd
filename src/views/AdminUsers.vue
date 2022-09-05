@@ -64,10 +64,6 @@ export default {
     font-family: 'Roboto',sans-serif;
 }
 
-table{
-    table-layout: fixed;
-}
-
 @media screen and (max-width:992px){
     tr{
         display: flex;

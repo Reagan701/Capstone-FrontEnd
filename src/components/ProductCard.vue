@@ -25,6 +25,7 @@ export default {
     color:white;
     overflow: hidden;
     box-shadow: 0 0 5px greenyellow;
+    border-radius: 5px;
 }
 p{
     padding: 0;

@@ -93,8 +93,6 @@ export default {
     color:White !important;
 }
 
-
-
 .related{
     width: 268px !important; 
     height: 184px !important;

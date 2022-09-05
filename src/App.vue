@@ -10,6 +10,38 @@
 
 <style>
 
+.customSelect{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: bold;
+  background: transparent;
+  border: 2px solid #757575;
+  color: #757575;
+  transition: border 0.2s linear, color 0.2s linear ;
+}
+.customSelect:focus{
+  border:2px solid greenyellow;
+  color: greenyellow;
+}
+
+.selectedCustomSelect{
+  border:2px solid greenyellow !important;
+  color: greenyellow !important;
+}
+
+.customSelect:focus-visible{
+  outline: none;
+}
+
+.selectOption{
+  background: rgb(33,37,41);
+  color: white;
+  font-weight: bold;
+  padding:1rem;
+}
+
 p{
   margin:0;
 }
