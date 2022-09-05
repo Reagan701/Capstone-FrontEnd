@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade text-black" :id="`productEdit`+product.prodId" tabindex="-1" :aria-labelledby="`productEditLabel`+product.prodId" aria-hidden="true">
+  <div class="modal fade text-white" :id="`productEdit`+product.prodId" tabindex="-1" :aria-labelledby="`productEditLabel`+product.prodId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,7 +15,7 @@
                     <input v-model="product.category" type="text">
                     <input v-model="product.quantity" type="number">
                     <input v-model="product.price" type="number">
-                    <button type="submit" class="confirm">Submit</button>
+                    <button type="submit" class="button">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">

@@ -205,7 +205,7 @@ export default createStore({
         }
       })
       .then((res)=>res.json())
-      .then((data)=> console.log(data));
+      .then(()=> context.dispatch('getProducts'));
     },
     addToCart(context,payload){
       fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID, {
@@ -222,17 +222,21 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/cart/'+ context.state.currentUser.userID)
       .then((res)=> res.json())
       .then((data)=> {
-        context.commit('setCurrentCart',JSON.parse(data.results[0].cartItems));
-        context.dispatch('getCartTotal')
+        if(data.results[0].cartItems){
+          context.commit('setCurrentCart',JSON.parse(data.results[0].cartItems));
+          context.dispatch('getCartTotal')
+        }
       });
     },
     getCartTotal(context){
       const cart = toRaw(context.state.currentCart);
-      let total = 0;
-      for(let i = 0; i<cart.length;i++){
-        total += cart[i].price;
+      if(cart){
+        let total = 0;
+        for(let i = 0; i<cart.length;i++){
+          total += cart[i].price;
+        }
+        context.commit('setCartTotal',total);
       }
-      context.commit('setCartTotal',total);
     },
     removeFromCart(context,payload){
       fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID+'/cartItems/'+payload.prodId, {

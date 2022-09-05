@@ -23,6 +23,15 @@ p{
   margin-left:15px;
   border-bottom: 2px solid #757575;
 }
+.modal-content{
+  background-color: #0c0c0c;
+}
+
+.modal-header{
+  margin-right:15px;
+  margin-left:15px;
+  border-bottom: 2px solid #757575;
+}
 
 *{
   font-family: 'Roboto', sans-serif;

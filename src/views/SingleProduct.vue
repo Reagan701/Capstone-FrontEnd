@@ -124,14 +124,14 @@ export default {
 .img-fluid{
     width:1000px !important;
     height: 497px !important;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 @media screen and (max-width:1199px) {
     .img-fluid{
         width:1000px !important;
         height: 358px !important;
-        object-fit: cover;
+        object-fit: contain;
     }
     
 }
@@ -139,7 +139,7 @@ export default {
     .img-fluid{
         width:516px !important;
         height: 344px !important;
-        object-fit: cover;
+        object-fit: contain;
     }
     
 }
@@ -147,7 +147,7 @@ export default {
     .img-fluid{
         width:1000px !important;
         height: 265px !important;
-        object-fit: cover;
+        object-fit: contain;
     }
     
 }
