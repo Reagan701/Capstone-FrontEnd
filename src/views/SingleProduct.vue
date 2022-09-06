@@ -58,7 +58,10 @@ export default {
     },
     mounted(){
         window.scrollTo(0,0);
-        this.$store.dispatch('getSingleProduct', this.$route.params.id);
+        setTimeout(() =>{
+            this.$store.dispatch('getSingleProduct', this.$route.params.id);
+
+        },500)
     },
     methods:{
         changeImg(id){
@@ -76,7 +79,9 @@ export default {
         $route(to,from){
             window.scrollTo(0,0);
             this.$store.commit('setSingleProduct',null);
-            this.$store.dispatch('getSingleProduct', to.params.id);
+            setTimeout(() => {
+                this.$store.dispatch('getSingleProduct', to.params.id); 
+            }, 500);
         }
     }
 }
@@ -85,7 +90,7 @@ export default {
 <style scoped>
 
 .singleProduct{
-    padding-top:96px;
+    padding-top:81px;
     color:White !important;
 }
 .relatedProductView{

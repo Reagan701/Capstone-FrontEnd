@@ -16,6 +16,6 @@ export default {
 
 <style scoped>
     .checkout{
-        padding-top:84px
+        padding-top:81px
     }
 </style>

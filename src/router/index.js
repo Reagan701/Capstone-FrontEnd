@@ -13,6 +13,7 @@ import AdminUsers from '../views/AdminUsers.vue';
 import Contact from '../views/Contact.vue';
 import SingleCart from '../views/SingleCart.vue';
 import Checkout from '../views/Checkout.vue';
+import Profile from '../views/Profile.vue';
 
 const routes = [
   {
@@ -88,6 +89,11 @@ const routes = [
     path: '/checkout',
     name: 'checkout',
     component: Checkout
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
   }
 ]
 

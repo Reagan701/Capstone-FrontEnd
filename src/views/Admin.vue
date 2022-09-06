@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .admin{
-  padding-top:84px;
+  padding-top:81px;
   font-family: 'Roboto',sans-serif;
 }
 .gap{

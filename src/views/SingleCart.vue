@@ -34,7 +34,7 @@ export default {
 <style scoped>
 
 .singleCart{
-    padding-top:96px
+    padding-top:81px;
 }
 
 #border:after{

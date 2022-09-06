@@ -16,7 +16,7 @@
 
 <style scoped>
 .about{
-  padding-top: 84px;
+  padding-top: 81px;
 }
 
 

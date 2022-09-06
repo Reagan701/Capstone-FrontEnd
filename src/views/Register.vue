@@ -112,19 +112,39 @@ export default {
     font-family: 'Roboto',sans-serif;
 }
 
+.register{
+    padding-top:81px;
+}
+
 #pass{
     position:relative;
 }
 
 #pass i{
     position:absolute;
-    top:27%;
-    left:96%;
+    top:20%;
+    left:93%;
     color: #5c9100;
     cursor: pointer;
 }
 i:active{
     transform: scale(0.9);
+}
+
+@media screen and (min-width:991px){
+    #pass i{
+        left:97%;
+    }
+}
+@media screen and (max-width:768px){
+    #pass i{
+        left:90%;
+    }
+}
+@media screen and (max-width:450px){
+    #pass i{
+        left:85% !important;
+    }
 }
 
 </style>

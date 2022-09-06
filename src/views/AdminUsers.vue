@@ -60,7 +60,7 @@ export default {
 
 <style scoped>
 .adminUsers{
-    padding-top:84px;
+    padding-top:81px;
     font-family: 'Roboto',sans-serif;
 }
 

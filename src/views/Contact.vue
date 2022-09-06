@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .contact{
-    padding-top:84px;
+    padding-top:81px;
 }
 
 h1{

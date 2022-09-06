@@ -8,6 +8,7 @@
             <div id="pass">
                 <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
                 <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
+                <!-- <label for="text">?</label> -->
                 <input id="passwordInput" name="password" class="my-5 w-100" type="password" required v-model="password" @input="reset" @change="reset" @click="reset" placeholder="password">
             </div>
             <div v-if="clicked && !currentUser">
@@ -90,7 +91,7 @@ export default {
 
 <style scoped>
 .login{
-    padding-top:84px;
+    padding-top:81px;
 }
 
 h1{
@@ -113,6 +114,19 @@ a{
     color: #5c9100;
     cursor: pointer;
 }
+#pass label{
+    position:absolute;
+    top:41%;
+    left:100%;
+    color: greenyellow;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    aspect-ratio: 1;
+    border: 1px solid greenyellow;
+}
 i:active{
     transform: scale(0.9);
 }
@@ -125,6 +139,11 @@ p{
     color:greenyellow;
 }
 
+@media screen and (min-width:991px){
+    #pass i{
+        left:96%;
+    }
+}
 @media screen and (max-width:768px){
     #pass i{
         left:90%;
