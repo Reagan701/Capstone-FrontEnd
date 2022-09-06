@@ -1,5 +1,5 @@
 <template>
-    <nav class="p-0 navbar text-center fixed-top navbar-light">
+    <nav class="p-0 navbar text-center fixed-top navbar-dark">
         <div class="container p-3 mt-1">
             <a href="#" class="me-auto fs-3 text-white navbar-brand">Digiverse</a>
             <div id="nav" v-if="!user" class="fs-5 me-auto">
@@ -23,19 +23,30 @@
             <button class="btn ms-auto" id="offcanvasButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <i id="nav" v-if="user" data-bs-toggle="offcanvas" data-bs-target="#cart" class="ms-auto bi bi-person-circle"></i>
+            <i id="nav" v-if="user" data-bs-toggle="offcanvas" data-bs-target="#cart" class="ms-auto bi bi-cart"></i>
             <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbar">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navbar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <h1 class="offcanvas-title" style="color:greenyellow !important; font-weight:bold;" id="offcanvasNavbarLabel">Digiverse</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <div class="d-flex flex-column mx-auto">
+                    <div v-if="!user" class="d-flex flex-column mx-auto">
                         <router-link class="me-2" to="/">Home</router-link>
                         <router-link class="me-2" to="/about">About</router-link>
-                        <router-link class="me-2" to="/login">Login</router-link>    
-                        <router-link to="/register">Register</router-link>    
-                        <i id="nav" class="ms-auto bi bi-person-circle"></i>
+                        <router-link v-if="user" class="me-2" to="/products">Products</router-link>
+                        <router-link v-if="user" class="me-2" to="/admin">Admin</router-link>
+                        <router-link class="me-2" to="/contact">Contact</router-link>
+                        <router-link v-if="!user" class="me-2" to="/login">Login</router-link>
+                        <router-link v-if="!user" to="/register">Register</router-link>    
+                    </div>
+                    <div v-if="user" class="d-flex flex-column mx-auto">
+                        <router-link class="me-2" to="/">Home</router-link>
+                        <router-link class="me-2" to="/about">About</router-link>
+                        <router-link v-if="user" class="me-2" to="/products">Products</router-link>
+                        <router-link v-if="user" class="me-2" to="/admin">Admin</router-link>
+                        <router-link class="me-2" to="/contact">Contact</router-link>
+                        <router-link v-if="!user" class="me-2" to="/login">Login</router-link>
+                        <router-link v-if="!user" to="/register">Register</router-link>    
                     </div>
                 </div>
             </div>
@@ -68,7 +79,7 @@ nav{
 }
 
 .bi{
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 .offcanvas{
     width: 100vw !important;
@@ -104,4 +115,10 @@ a{
 .navbar-brand{
     color:greenyellow !important;
 }
+
+.btn-close{
+    width: 0.5em !important;
+    height: 0.5em !important;
+}
+
 </style>

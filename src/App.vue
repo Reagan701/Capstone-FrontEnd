@@ -240,6 +240,23 @@ nav a:hover {
 ::-webkit-scrollbar-thumb{
   background-color:greenyellow;
 }
+
+.route-enter-from{
+  opacity:0;
+  transform: translateX(-200px);
+}
+.route-leave-to{
+  opacity:0;
+  transform: translateX(1200px);
+}
+.route-leave-active{
+  opacity:0;
+  transition: all 0.5s ease-in;
+}
+.route-enter-active{
+  transition: all 0.5s ease-out;
+}
+
 </style>
 
 <script>

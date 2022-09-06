@@ -1,16 +1,26 @@
 <template>
     <div class="viewport register container d-flex justify-content-center align-items-center flex-column">
         <h1 class="fw-bold w-100">Register</h1>
-        <form class="w-75 d-flex flex-column" @submit="register">
-            <input type="text" @click="reset" v-model="firstName" required placeholder="first name">
-                <input type="text" required v-model="lastName" @click="reset" placeholder="last name">
-                <input type="number" required v-model="phoneNumber" @click="reset" placeholder="phoneNumber">
-                <input type="email" required v-model="email" @click="reset" placeholder="email@example.com">
+        <form class="w-100 row" @submit="register">
+            <div class="col-md-6 mt-5">
+                <input class="w-100" type="text" @click="reset" v-model="firstName" required placeholder="first name">
+            </div>
+            <div class="col-md-6 mt-5">
+                <input class="w-100" type="text" required v-model="lastName" @click="reset" placeholder="last name">
+            </div>
+            <div class="col-md-6 mt-5">
+                <input class="w-100" type="email" required v-model="email" @click="reset" placeholder="email@example.com">
+            </div>
+            <div class="col-md-6 mt-5">
+                <input class="w-100" type="number" required v-model="phoneNumber" @click="reset" placeholder="phoneNumber">
+            </div>
+            <div class="col-md-12 my-5">
                 <div id="pass">
                     <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
                     <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
                     <input id="passwordInput" type="password" required v-model="password" @click="reset" class="w-100" placeholder="password">
                 </div>
+            </div>
             <div v-if="clicked && !currentUser">
                 <div v-if="!user && !registerError">
                     <p>Checking..</p>

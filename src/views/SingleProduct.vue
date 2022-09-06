@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-7">
             <img :src="singleProduct.prodImg" id="mainImg" class="img-fluid" :alt="singleProduct.prodName">
-            <!-- <div class="d-flex">
+            <div class="d-flex">
                 <div @mouseleave="reset" @mouseenter="changeImg(2)" class="relatedContainer w-50 position-relative">
                     <div class="cover"></div>
                     <img style="border-right:4px solid #0c0c0c" :src="JSON.parse(singleProduct.relatedImages).image1" id="2" class="related" alt="image1">
@@ -12,7 +12,7 @@
                     <div class="cover"></div>
                     <img style="border-left:4px solid #0c0c0c" :src="JSON.parse(singleProduct.relatedImages).image2" id="3" class="related" alt="image2">
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="col-md-4 ms-auto bg-dark">
             <div class="d-flex justify-content-evenly align-items-center flex-column h-100">

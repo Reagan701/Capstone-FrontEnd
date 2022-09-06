@@ -109,7 +109,7 @@ a{
 #pass i{
     position:absolute;
     top:41%;
-    left:96%;
+    left:93%;
     color: #5c9100;
     cursor: pointer;
 }
@@ -123,6 +123,20 @@ input{
 
 p{
     color:greenyellow;
+}
+
+@media screen and (max-width:768px){
+    #pass i{
+        left:90%;
+    }
+}
+@media screen and (max-width:450px){
+    #pass i{
+        left:85% !important;
+    }
+    a{
+        width: 50% !important;
+    }
 }
 
 </style>

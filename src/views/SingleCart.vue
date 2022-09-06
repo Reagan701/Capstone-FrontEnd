@@ -19,7 +19,9 @@ import ProductCard from '../components/ProductCard.vue'
 export default {
     components:{ProductCard, Loader},
     mounted(){
-        this.$store.dispatch('getSingleCartInfo', this.$route.params.id)
+        setTimeout(() => {
+            this.$store.dispatch('getSingleCartInfo', this.$route.params.id)
+        }, 500);
     },
     computed:{
         singleCart(){
