@@ -77,6 +77,7 @@ export default {
     },
     methods:{
         closeNav(){
+            window.scrollTo(0,0);
             document.getElementById('closeNavButton').click();
         }
     }

@@ -104,6 +104,10 @@ input:focus::placeholder{
   color: #76b900
 }
 
+a{
+    text-decoration: none;
+}
+
 h1{
   color: greenyellow;
 }

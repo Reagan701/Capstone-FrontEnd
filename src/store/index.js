@@ -15,7 +15,8 @@ export default createStore({
     productCategory: null,
     currentCart: null,
     cartTotal: 0,
-    singleCart: null
+    singleCart: null,
+    singleBilling: null
   },
   getters: {
   },
@@ -58,6 +59,9 @@ export default createStore({
     },
     setSingleCartInfo(state,info){
       state.singleCart = info
+    },
+    setSingleBilling(state,info){
+      state.singleBilling = info
     }
   },
   actions: {
@@ -258,6 +262,11 @@ export default createStore({
         console.log(data.results[0])
         context.commit('setSingleCartInfo', data.results[0]);
       });
+    },
+    getSingleBilling(context){
+      fetch('https://digiverseapi.herokuapp.com/billing/'+context.state.currentUser.userID)
+      .then((res)=>res.json())
+      .then((data)=>context.commit('setSingleBilling', data.results[0]));
     }
   },
   modules: {

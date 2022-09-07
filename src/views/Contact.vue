@@ -2,13 +2,13 @@
     <div class="viewport contact container d-flex justify-content-center align-items-center flex-column gap-5">
         <h1 class="w-100 mb-5 pb-5">Contact Us</h1>
         <form class="w-100 row" action="https://formspree.io/f/mdojagyg" method="POST">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-4 mb-md-0">
                 <input type="text" class="w-100" name="Name" required placeholder="name" maxlength="40">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 my-4 my-md-0">
                 <input name="subject" class="w-100" type="text" required placeholder="subject" maxlength="20">
             </div>
-            <div class="col-md-12 my-5">
+            <div class="col-md-12 mb-5 my-md-5">
                 <textarea class="w-100" name="message" cols="30" rows="3" style="resize:none;" placeholder="tell us something"></textarea>
             </div>
             <button class="button mx-auto" type="submit">
@@ -51,6 +51,17 @@ button{
     overflow: hidden;
     transition: all 0.2s;
     width: 20%;
+}
+
+@media screen and (max-width:768px) {
+    button{
+        width: 30%;
+    }
+}
+@media screen and (max-width:576px) {
+    button{
+        width: 45%;
+    }
 }
 
 button i{

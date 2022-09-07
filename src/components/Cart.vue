@@ -12,10 +12,11 @@
                         <h5 class="text-white">Your Cart is Empty</h5>
                     </div>
                     <div class="row mx-auto" v-else>
-                        <CartCard v-for="item in currentCart" :key="item.prodId" :product="item"/>
+                        {{currentCartInfo}}
+                        <!-- <CartCard v-for="item in currentCart" :key="item.prodId" :product="item"/>
                         <div style="border-top:2px solid white" class="pt-3 col-md-12">
                             <button class="ms-auto button w-50">Checkout</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -31,6 +32,9 @@ export default {
     computed:{
         currentCart(){
             return this.$store.state.currentCart;
+        },
+        currentCartInfo(){
+            return this.$store.state.currentCartInfo;
         },
         cartTotal(){
             return this.$store.state.cartTotal;

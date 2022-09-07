@@ -13,10 +13,12 @@
             </div>
             <div v-if="clicked && !currentUser">
                 <div v-if="!user && !loginError">
-                    <h2 class="fw-bold text-white">Checking..</h2>
+                    <h2 class="fw-bold text-white mb-3">Checking..</h2>
+                    <Loader2 />
                 </div>
                 <div v-else-if="!loginError">
-                    <h2 class="fw-bold text-white">Verifying...</h2>
+                    <h2 class="fw-bold text-white mb-3">Verifying...</h2>
+                    <Loader2 />
                 </div>
                 <div v-else>
                     <h2 class="fw-bold text-white">{{loginError}}</h2>
@@ -37,7 +39,9 @@
 </template>
 
 <script>
+import Loader2 from '../components/Loader2.vue';
 export default {
+    components:{Loader2},
     data(){
         return{
             email: null,
@@ -97,10 +101,6 @@ export default {
 h1{
     font-weight: 900;
     color:greenyellow   
-}
-
-a{
-    text-decoration: none;
 }
 
 #pass{

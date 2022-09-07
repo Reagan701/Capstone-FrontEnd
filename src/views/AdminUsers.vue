@@ -26,10 +26,18 @@
                 <td>{{user.userRole}}</td>
                 <td>
                     <router-link :to="{name:'singleCart', params:{id:user.userID}}">
-                        <button class="adminConfirm">Cart</button>
+                        <button class="deleteButton">
+                            <span>Cart</span>
+                            <i class="bi bi-cart"></i>
+                        </button>
                     </router-link>
                 </td>
-                <td><button data-bs-toggle="modal" :data-bs-target="`#userDelete`+user.userID" class="adminConfirm">Delete</button></td>
+                <td>
+                    <button data-bs-toggle="modal" :data-bs-target="`#userDelete`+user.userID" class="deleteButton">
+                        <span>Delete</span>
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </td>
                 <UserDeleteModal :user="user"/>
             </tr>
         </tbody>
@@ -69,6 +77,44 @@ export default {
         display: flex;
         flex-direction: column;
     }
+}
+
+.deleteButton{
+    padding-right:1rem;
+    padding-left:0.75rem;
+    padding-top: 0.5rem ;
+    padding-bottom:0.5rem ;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+}
+.deleteButton:hover .bi-trash-fill{
+    transform: translateX(-130%);
+    color: greenyellow;
+}
+.deleteButton:hover .bi-cart{
+    transform: translateX(-90%);
+    color: greenyellow;
+}
+.deleteButton:hover span{
+    color: transparent;
+}
+.deleteButton:hover{
+    border-color: #76b900;
+    box-shadow: 0 0 2px #76b900;
+}
+
+.deleteButton span{
+    font-weight: bold;
+    transition: all 0.15s linear;
+}
+
+.bi{
+    transition: all 0.15s linear;
+    transform: translateX(10px);
 }
 
 </style>

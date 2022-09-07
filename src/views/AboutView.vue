@@ -2,12 +2,14 @@
   <div class="viewport about container">
     <h1>This is an about page</h1>
       <Loader />
+      <Loader2 />
   </div>
 </template>
   <script>
   import Loader from '../components/Loader.vue'
+  import Loader2 from '../components/Loader2.vue'; 
   export default {
-    components:{Loader},
+    components:{Loader, Loader2},
     mounted(){
       window.scrollTo(0,0);
     }
