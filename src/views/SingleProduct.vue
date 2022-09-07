@@ -99,8 +99,12 @@ export default {
 }
 
 .related{
-    width: 268px !important; 
-    height: 184px !important;
+    width:100%;
+    height: fit-content;
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* width: 268px !important; 
+    height: 184px !important; */
     margin-top:8px;
 }
 
@@ -127,7 +131,7 @@ export default {
 .img-fluid{
     width:1000px !important;
     height: 497px !important;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 @media screen and (max-width:1199px) {

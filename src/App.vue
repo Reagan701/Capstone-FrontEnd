@@ -257,6 +257,12 @@ nav a:hover {
   transition: all 0.5s ease-out;
 }
 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}
+
 </style>
 
 <script>

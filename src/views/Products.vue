@@ -2,7 +2,7 @@
   <div v-if="products" class="viewport products container">
     <h1 class="fw-bold my-4">Our Items</h1>
     <div class="row">
-        <div id="filterColumn" class="col-md-3 d-flex flex-column gap-5 justify-content-start align-items-center col-lg-2">
+        <div id="filterColumn" class="col-md-3 d-flex flex-column gap-5 justify-content-start align-items-center col-lg-2"> 
             <h2>Filter:</h2>
             <input class="w-100" type="text" placeholder="search for anything" v-model="search">
             <select @change="checkFilterColors" v-model="filter" class="filterSelect">
@@ -23,13 +23,13 @@
                 <option class="selectOption" value="desc">Z-A</option>
             </select>
         </div>
-        <div class="col-md-9 col-lg-10">
+        <div class="ms-auto col-md-9">
             <div v-if="products.length>0" class="row row-border position-relative">
                 <ProductCard v-for="product in products" :key="product.prodId" :product="product"/>
             </div>
             <div v-else class="row row-border position-relative h-100">
                 <div class="col-md-11">
-                    <h2 style="margin-top:2rem;">No Items Found</h2>
+                    <h2 style="margin-top:2rem;">No {{search}} Found</h2>
                 </div>
             </div>
         </div>
@@ -122,6 +122,14 @@ export default {
     padding-right: 1rem;
     padding-left: 1rem;
     border-radius: 5px;
+    position: fixed;
+}
+
+@media screen and (max-width:768px) {
+    #filterColumn{
+        position: inherit;
+    }
+    
 }
 
 .row-border::before{
