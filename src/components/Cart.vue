@@ -41,4 +41,8 @@ export default {
 
 <style scoped>
 
+.offcanvas{
+    width: 35vw;
+}
+
 </style>

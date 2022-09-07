@@ -2,7 +2,7 @@
   <div v-if="products" class="viewport products container">
     <h1 class="fw-bold my-4">Our Items</h1>
     <div class="row">
-        <div id="filterColumn" class="col-md-3 d-flex flex-column gap-5 justify-content-start align-items-center col-lg-2"> 
+        <div id="filterColumn" class="col-md-3 d-flex flex-column gap-5 justify-content-start align-items-center col-lg-2">
             <h2>Filter:</h2>
             <input class="w-100" type="text" placeholder="search for anything" v-model="search">
             <select @change="checkFilterColors" v-model="filter" class="filterSelect">
@@ -29,7 +29,7 @@
             </div>
             <div v-else class="row row-border position-relative h-100">
                 <div class="col-md-11">
-                    <h2 style="margin-top:2rem;">No {{search}} Found</h2>
+                    <h2 style="margin-top:2rem;">No {{search }} Found</h2>
                 </div>
             </div>
         </div>
@@ -123,6 +123,7 @@ export default {
     padding-left: 1rem;
     border-radius: 5px;
     position: fixed;
+    /* top:1000px */
 }
 
 @media screen and (max-width:768px) {
