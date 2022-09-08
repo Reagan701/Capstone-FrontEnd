@@ -85,12 +85,13 @@ input, textarea{
   border:2px solid transparent;
   outline: none;
   border-bottom: 2px solid #757575;
-  padding:5px;
+  padding:6px;
   color: white;
   letter-spacing: 1px;
   transition: all 0.5s linear;
   background-color: transparent;
   font-weight: 900;
+  border-radius: 5px;
 }
 
 input::placeholder{
@@ -109,11 +110,13 @@ input:focus::placeholder{
 }
 
 a{
-    text-decoration: none;
+  text-decoration: none;
 }
 
 h1{
   color: greenyellow;
+  word-spacing: 1px;
+  letter-spacing: 1px;
 }
 .confirm{
   border: 2px solid greenyellow;
@@ -269,6 +272,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
   -webkit-appearance: none;
   -moz-appearance: none;
   margin: 0;
+}
+
+@media screen and (max-width:992px){
+  tr{
+      display: flex;
+      flex-direction: column;
+  }
+  td{
+      border:hidden;
+      padding-top:1rem;
+  }
 }
 
 </style>

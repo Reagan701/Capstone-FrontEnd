@@ -1,7 +1,7 @@
 <template>
     <nav class="p-0 navbar text-center fixed-top navbar-dark">
         <div class="container p-3 mt-1">
-            <a href="#" class="me-auto fs-3 text-white navbar-brand">Digiverse</a>
+            <router-link to="/" class="me-auto fs-3 text-white navbar-brand">Digiverse</router-link>
             <div id="nav" v-if="!user" class="fs-5 me-auto">
                 <router-link class="me-2" to="/">Home</router-link>
                 <router-link class="me-2" to="/about">About</router-link>
@@ -15,7 +15,7 @@
                 <router-link class="me-2" to="/">Home</router-link>
                 <router-link class="me-2" to="/about">About</router-link>
                 <router-link v-if="user" class="me-2" to="/products">Products</router-link>
-                <router-link v-if="user" class="me-2" to="/admin">Admin</router-link>
+                <router-link v-if="user.userRole == 'admin'" class="me-2" to="/admin">Admin</router-link>
                 <router-link class="me-2" to="/contact">Contact</router-link>
                 <router-link v-if="!user" class="me-2" to="/login">Login</router-link>
                 <router-link v-if="!user" to="/register">Register</router-link>    

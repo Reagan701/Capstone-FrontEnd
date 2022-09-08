@@ -13,10 +13,13 @@
                     </div>
                     <div class="row mx-auto" v-else>
                         <CartCard v-for="item in currentCart" :key="item.prodId" :product="item"/>
-                        <div style="border-top:2px solid white" class="pt-3 col-md-12">
+                        <div style="border-top:2px solid white" class="pt-3 col-md-6">
                             <router-link to="/checkout">
                                 <button data-bs-dismiss="offcanvas" class="ms-auto button w-50">Checkout</button>
                             </router-link>
+                        </div>
+                        <div class="col-md-6">
+                            <button data-bs-dismiss="offcanvas" class="me-auto button w-50">Clear Cart</button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +47,7 @@ export default {
 <style scoped>
 
 .offcanvas{
-    width: 35vw;
+    width: 30vw;
 }
 
 </style>

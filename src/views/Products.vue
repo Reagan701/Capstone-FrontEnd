@@ -27,7 +27,7 @@
             <div v-if="products.length>0" class="row row-border position-relative">
                 <ProductCard v-for="product in products" :key="product.prodId" :product="product"/>
             </div>
-            <div v-else class="row row-border position-relative h-100">
+            <div v-else class="row position-relative h-100">
                 <div class="col-md-11">
                     <h2 style="margin-top:2rem;">No {{search }} Found</h2>
                 </div>
@@ -59,9 +59,10 @@ export default {
         products(){
             let prod = this.$store.state.products?.filter((x)=> {
                 let isMatch = true;
-
-                if(!x.prodName?.toLowerCase().includes(this.search.toLowerCase())){
-                    isMatch = false;
+                if(this.search.toLowerCase().charAt(0) != ' '){
+                    if(!x.prodName?.toLowerCase().includes(this.search.toLowerCase())){
+                        isMatch = false;
+                    }
                 }
 
                 if(this.filter != 'All'){
@@ -123,7 +124,6 @@ export default {
     padding-left: 1rem;
     border-radius: 5px;
     position: fixed;
-    /* top:1000px */
 }
 
 @media screen and (max-width:768px) {

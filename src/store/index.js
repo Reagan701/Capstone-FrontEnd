@@ -180,7 +180,8 @@ export default createStore({
           Swal.fire({
             icon:'error',
             title:data.message,
-            padding:'1rem'
+            padding:'1rem',
+            button:false
             }
           )
         }else{
@@ -271,6 +272,19 @@ export default createStore({
         context.dispatch('getCurrentCart');
       })
     },
+    clearCart(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID, {
+        method: 'DELETE',
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=>res.json())
+      .then((data)=> {
+        console.log(data);
+        context.dispatch('getCurrentCart');
+      })
+    },
     getSingleCartInfo(context,payload){
       fetch('https://digiverseapi.herokuapp.com/usercart/'+ payload)
       .then((res)=> res.json())
@@ -294,12 +308,6 @@ export default createStore({
       })
       .then((res)=> res.json())
       .then((data)=> {
-        Swal.fire({
-          icon:'success',
-          title:'Successfully Edited',
-          text: 'You will now be logged Out',
-          padding:'1rem'
-        })
         context.commit('resetState');
       })
     },
@@ -313,11 +321,6 @@ export default createStore({
       })
       .then((res)=> res.json())
       .then((data)=> {
-        Swal.fire({
-          icon:'success',
-          title:'Logged In',
-          padding:'1rem'
-        })
         context.commit('resetState');
       })
     },
@@ -330,14 +333,7 @@ export default createStore({
       })
       .then((res)=> res.json())
       .then((data)=>{
-        Swal.fire({
-          icon:'success',
-          title:'Logged In',
-          padding:'1rem'
-        })
-        setTimeout(() => {
-          context.commit('resetState');
-        }, 500);
+        context.commit('resetState');
       })
     }
   },

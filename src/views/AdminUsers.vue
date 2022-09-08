@@ -72,12 +72,7 @@ export default {
     font-family: 'Roboto',sans-serif;
 }
 
-@media screen and (max-width:992px){
-    tr{
-        display: flex;
-        flex-direction: column;
-    }
-}
+
 
 .deleteButton{
     padding-right:1rem;
@@ -115,6 +110,18 @@ export default {
 .bi{
     transition: all 0.15s linear;
     transform: translateX(10px);
+}
+
+.table>:not(caption)>*>*{
+    background-color: transparent !important;
+}
+
+tbody:last-child{
+    border-bottom: hidden;
+}
+
+.table{
+    font-size: 1.1rem;
 }
 
 </style>

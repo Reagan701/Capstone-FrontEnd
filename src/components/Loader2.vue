@@ -26,6 +26,7 @@ export default {
     background: greenyellow;
     height: 100%;
     width: 0%;
+    border-radius: 5px;
     animation: load 1.5s ease-in-out infinite;
 }
 

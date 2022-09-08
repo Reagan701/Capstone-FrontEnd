@@ -16,7 +16,7 @@
                     <div class="row">
                         <form @submit="updateUser" class="col-md-6">
                             <div class="w-100 col-md-6 d-flex justify-content-center align-items-center flex-column">
-                                <h2>UserInfo</h2>
+                                <h2 id="userHeading">UserInfo</h2>
                                 <input class="w-100 mb-3" placeholder="first name" type="text" v-model="firstName">
                                 <input class="w-100 my-3" placeholder="last name" type="text" v-model="lastName">
                                 <input class="w-100 my-3" placeholder="phone number" type="text" v-model="phoneNumber">
@@ -150,6 +150,10 @@ h2{
     #formColumn{
         border: 2px solid #757575;
     }
+    i{
+        color: white;
+        font-size: 13rem;
+    }
 }
 
 @media screen and (max-width:767px) {
@@ -159,12 +163,16 @@ h2{
     }
     #billingHeading{
         margin-top:3rem;
+        margin-bottom:2rem;
+    }
+    #userHeading{
+        margin-bottom:2rem;
+    }
+    i{
+        color: white;
+        font-size: 10rem;
     }
 }
 
-i{
-    color: white;
-    font-size: 13rem;
-}
 
 </style>

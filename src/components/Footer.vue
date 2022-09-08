@@ -27,11 +27,16 @@
                 </ul>
             </div>
         </div>
-        <div class="borderTop d-flex pb-2">
-            <h6><span>Copyright</span> &copy; <span class="me-5">Digiverse</span> Made By: <span>Reagan Carolussen</span></h6>
-            <div class="ms-auto">
+        <div class="borderTop pb-2 row">
+            <div class="col-md-3">
+                <h6><span>Copyright</span> &copy; <span>Digiverse</span></h6>
+            </div>
+            <div class="col-md-4 me-auto">
+                <h6>Made By: <span>Reagan Carolussen</span></h6>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-3 ms-auto col-md-2">
                 <i class="socialLink bi bi-linkedin"></i>
-                <i class="socialLink ms-3 bi bi-github"></i>
+                <i class="socialLink bi bi-github"></i>
             </div>
         </div>
     </div>
