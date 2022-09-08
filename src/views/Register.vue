@@ -1,5 +1,5 @@
 <template>
-    <div class="viewport register container d-flex justify-content-center align-items-center flex-column">
+    <div v-if="!currentUser" class="viewport register container d-flex justify-content-center align-items-center flex-column">
         <h1 class="fw-bold w-100">Register</h1>
         <form class="w-100 row" @submit="register">
             <div class="col-md-6 mt-5">
@@ -23,27 +23,34 @@
             </div>
             <div v-if="clicked && !currentUser">
                 <div v-if="!user && !registerError">
-                    <p>Checking..</p>
+                    <h2 class="fw-bold text-white mb-3">Checking..</h2>
+                    <Loader2 />
                 </div>
                 <div v-else-if="!registerError">
-                    <p>Verifying...</p>
+                    <h2 class="fw-bold text-white mb-3">Verifying...</h2>
+                    <Loader2 />
                 </div>
                 <div v-else>
-                    <p class="fw-bold">{{registerError}}</p>
+                    <h2 class="fw-bold text-white">{{registerError}}</h2>
                 </div>
-            </div>
-            <div v-else-if="clicked && currentUser">
-                <p class="fw-bold">Welcome {{currentUser.firstName}} {{currentUser.lastName}}</p>
             </div>
             <div v-else>
                 <button class="button mx-auto" type="submit">Register</button>
             </div>
         </form>
     </div>
+    <div v-else class="viewport login container d-flex justify-content-center align-items-center flex-column gap-5">
+        <h1 class="fw-bold">Welcome to Digiverse {{currentUser.firstName}} {{currentUser.lastName}}</h1>
+        <router-link to="/products" class="w-25">
+            <button class="button w-100">View our Products</button>
+        </router-link>
+    </div>
 </template>
 
 <script>
+import Loader2 from '../components/Loader2.vue';
 export default {
+    components:{Loader2},
     data(){
         return{
             firstName: null,

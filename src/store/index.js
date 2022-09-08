@@ -1,8 +1,9 @@
+import router from '@/router';
 import { toRaw } from 'vue';
 import { createStore } from 'vuex'
 
-export default createStore({
-  state: {
+const def = () => {
+  return{
     user: null,
     currentUser: null,
     products: null,
@@ -16,11 +17,21 @@ export default createStore({
     currentCart: null,
     cartTotal: 0,
     singleCart: null,
-    singleBilling: null
-  },
+    singleBilling: null,
+    userPassword: null
+  }
+}
+
+
+export default createStore({
+  state: def(),
   getters: {
   },
   mutations: {
+    resetState(state){
+      router.push('/login');
+      Object.assign(state,def());
+    },
     setUser(state,user){
       state.user = user;
     },
@@ -62,6 +73,9 @@ export default createStore({
     },
     setSingleBilling(state,info){
       state.singleBilling = info
+    },
+    setUserPassword(state,info){
+      state.userPassword = info;
     }
   },
   actions: {
@@ -171,6 +185,7 @@ export default createStore({
           )
         }else{
           context.commit('setUser', data.token);
+          context.commit('setUserPassword', payload.userPassword)
           context.dispatch('verify');
         }
       })
@@ -192,6 +207,7 @@ export default createStore({
           }
         )
         context.commit('setCurrentUser', data.decodedUser.user)
+        context.dispatch('getSingleBilling');
         context.dispatch('getCurrentCart')
       });
     },
@@ -234,13 +250,13 @@ export default createStore({
     },
     getCartTotal(context){
       const cart = toRaw(context.state.currentCart);
+      let total = 0;
       if(cart){
-        let total = 0;
         for(let i = 0; i<cart.length;i++){
           total += cart[i].price;
         }
-        context.commit('setCartTotal',total);
       }
+      context.commit('setCartTotal',total);
     },
     removeFromCart(context,payload){
       fetch('https://digiverseapi.herokuapp.com/cart/'+context.state.currentUser.userID+'/cartItems/'+payload.prodId, {
@@ -267,6 +283,62 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/billing/'+context.state.currentUser.userID)
       .then((res)=>res.json())
       .then((data)=>context.commit('setSingleBilling', data.results[0]));
+    },
+    updateBilling(context, payload){
+      fetch('https://digiverseapi.herokuapp.com/billing/'+context.state.currentUser.userID, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=> res.json())
+      .then((data)=> {
+        Swal.fire({
+          icon:'success',
+          title:'Successfully Edited',
+          text: 'You will now be logged Out',
+          padding:'1rem'
+        })
+        context.commit('resetState');
+      })
+    },
+    updateUser(context,payload){
+      fetch('https://digiverseapi.herokuapp.com/users/'+context.state.currentUser.userID, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=> res.json())
+      .then((data)=> {
+        Swal.fire({
+          icon:'success',
+          title:'Logged In',
+          padding:'1rem'
+        })
+        context.commit('resetState');
+      })
+    },
+    deleteAccount(context){
+      fetch('https://digiverseapi.herokuapp.com/users/'+context.state.currentUser.userID,{
+        method:'DELETE',
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then((res)=> res.json())
+      .then((data)=>{
+        Swal.fire({
+          icon:'success',
+          title:'Logged In',
+          padding:'1rem'
+        })
+        setTimeout(() => {
+          context.commit('resetState');
+        }, 500);
+      })
     }
   },
   modules: {

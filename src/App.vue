@@ -55,6 +55,10 @@ p{
   margin-left:15px;
   border-bottom: 2px solid #757575;
 }
+.modal-footer{
+  margin-right:15px;
+  margin-left:15px;
+}
 .modal-content{
   background-color: #0c0c0c;
 }

@@ -23,13 +23,13 @@
             <button class="btn ms-auto" id="offcanvasButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div v-if="cart" class="ms-auto d-flex justify-content-center align-items-center">
+            <div v-if="user" class="ms-auto d-flex justify-content-center align-items-center">
                 <router-link to="/profile">
                     <i class="bi bi-person-circle" style="margin-left:0.5rem"></i>
                 </router-link>
                 <button id="nav" style="margin-left:0.5rem; outline:none;padding:0.4rem !important" type="button" class="btn position-relative">
                     <i id="nav" data-bs-toggle="offcanvas" data-bs-target="#cart" class="ms-auto bi bi-cart"></i>
-                    <span style="background:greenyellow;" class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+                    <span v-if="cart" style="background:greenyellow;" class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                         <p id="badgeText">{{cart.length}}</p>
                     </span>
                 </button>

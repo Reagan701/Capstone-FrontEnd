@@ -8,7 +8,6 @@
             <div id="pass">
                 <i @click="change" v-if="visible" class="bi bi-eye-fill"></i>
                 <i @click="change" v-if="!visible" class="bi bi-eye-slash-fill"></i>
-                <!-- <label for="text">?</label> -->
                 <input id="passwordInput" name="password" class="my-5 w-100" type="password" required v-model="password" @input="reset" @change="reset" @click="reset" placeholder="password">
             </div>
             <div v-if="clicked && !currentUser">
@@ -94,6 +93,7 @@ export default {
 </script>
 
 <style scoped>
+
 .login{
     padding-top:81px;
 }
