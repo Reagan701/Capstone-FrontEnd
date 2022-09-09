@@ -49,7 +49,7 @@
                         <router-link @click="closeNav" class="me-2" to="/contact">Contact</router-link>
                         <router-link @click="closeNav" v-if="!user" class="me-2" to="/login">Login</router-link>
                         <router-link @click="closeNav" v-if="!user" to="/register">Register</router-link>
-                        <button style="outline:none;padding:0.4rem !important" v-if="cart" type="button" class="btn position-relative">
+                        <button style="outline:none;padding:0.4rem !important" v-if="cart" type="button" class="me-auto w-50 btn position-relative">
                             <i id="navCart" data-bs-toggle="offcanvas" data-bs-target="#cart" class="w-50 ms-auto bi bi-cart"></i>
                             <span id="badge" class="position-absolute top-0 start-100 translate-middle badge">
                                 <p style="color:#0c0c0c">{{cart.length}}</p>
@@ -110,6 +110,10 @@ nav{
     border: none;
     text-align: start;
     font-size: 3rem;
+}
+
+.offcanvas a{
+    font-size: 2.2rem;
 }
 
 #navCart::before{

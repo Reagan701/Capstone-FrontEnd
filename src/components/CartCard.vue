@@ -2,8 +2,8 @@
   <div class="col-md-6 py-3">
     <div class="itemcontainer my-2">
         <img class="img-fluid" :src="product.prodImg" :alt="product.prodName">
-        <p class="pt-lg-3 pt-sm-2">{{product.prodName}}</p>
-        <p>R{{product.price}}</p>
+        <p class="fw-bold pt-lg-3 pt-sm-2">{{product.prodName}}</p>
+        <p class="fw-bold" style="color:greenyellow">R{{product.price}}</p>
         <button @click="removeFromCart" class="button">Remove</button>
     </div>
   </div>

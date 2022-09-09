@@ -14,11 +14,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <router-link to="/checkout">
-                                        <button data-bs-dismiss="offcanvas" class="ms-auto button w-50">Checkout</button>
+                                        <button data-bs-dismiss="offcanvas" class="ms-auto button w-75">Checkout</button>
                                     </router-link>
                                 </div>
                                 <div class="col-md-6">
-                                    <button data-bs-dismiss="offcanvas" @click="clearCart" class="me-auto button w-50">Clear</button>
+                                    <button data-bs-dismiss="offcanvas" @click="clearCart" class="me-auto button w-75">Clear</button>
                                 </div>
                             </div>
                         </div>
@@ -54,9 +54,4 @@ export default {
 </script>
 
 <style scoped>
-
-.offcanvas{
-    width: 30vw;
-}
-
 </style>

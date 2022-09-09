@@ -43,4 +43,13 @@ export default {
   box-shadow: 0 0 5px greenyellow;
 }
 
+@media screen and (max-width:768px) {
+  .background{
+    width: 95%;
+  }
+  .button{
+    width:120px ;
+  }
+}
+
 </style>
