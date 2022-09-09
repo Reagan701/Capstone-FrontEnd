@@ -1,7 +1,7 @@
 <template>
   <div v-if="singleProduct" class="viewport singleProduct container d-flex justify-content-center align-items-center flex-column">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <img :src="singleProduct.prodImg" id="mainImg" class="img-fluid" :alt="singleProduct.prodName">
             <div class="d-flex">
                 <div @mouseleave="reset" @mouseenter="changeImg(2)" class="relatedContainer w-50 position-relative">
@@ -14,16 +14,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 ms-auto bg-dark">
+        <div id="infoColumn" class="col-md-1"></div>
+        <div id="info" class="col-md-5 ms-auto">
             <div class="d-flex justify-content-evenly align-items-center flex-column h-100">
-                <h1>{{singleProduct.prodName}}</h1>
-                <div class="d-flex justify-content-end w-100">
-                    <h3>{{singleProduct.category}}</h3>
+                <h1 class="fw-bold">{{singleProduct.prodName}}</h1>
+                <div  style="text-align:left" class="d-flex justify-content-start w-100 flex-column gap-5">
+                    <h3 id="category" class="fw-bold">{{singleProduct.category}}</h3>
+                    <p class="fs-3 fw-bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime dolores unde, similique eius ipsa perspiciatis reprehenderit explicabo provident. Beatae!</p>
+                    <p style="text-align: left;color:greenyellow" class="fw-bold fs-1 mb-4">R {{singleProduct.price}}</p>
                 </div>
-                <p>{{singleProduct.prodDescription}}</p>
+                <!-- <p>{{singleProduct.prodDescription}}</p> -->
                 <div class="d-flex justify-content-evenly ms-auto flex-column">
-                    <p>{{singleProduct.price}}</p>
-                    <button @click="addToCart" class="btn btn-light">Add to cart</button>
+                    <button class="deleteButton">
+                        <span>Cart</span>
+                        <i class="bi bi-cart"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -31,7 +36,7 @@
     <div class="viewport relatedProductView">
         <div v-if="relatedProducts" class="row">
             <h1 class="mb-5 fw-bold heading">You might also like</h1>
-            <ProductCard :product="product" v-for="product in relatedProducts.filter((x)=> {return x.prodName != singleProduct.prodName})" :key="product.prodID"/>
+            <Card :product="product" v-for="product in relatedProducts.filter((x)=> {return x.prodName != singleProduct.prodName})" :key="product.prodID"/>
         </div>
         <div v-else class="viewport singleProduct d-flex justify-content-center align-items-center">
             <Loader/>
@@ -45,9 +50,9 @@
 
 <script>
 import Loader from '../components/Loader.vue';
-import ProductCard from '../components/ProductCard.vue';
+import Card from '../components/RelatedCard.vue';
 export default {
-    components: {ProductCard, Loader},
+    components: {Card, Loader},
     computed:{
         singleProduct(){
             return this.$store.state.singleProduct;
@@ -60,7 +65,6 @@ export default {
         window.scrollTo(0,0);
         setTimeout(() =>{
             this.$store.dispatch('getSingleProduct', this.$route.params.id);
-
         },500)
     },
     methods:{
@@ -89,8 +93,9 @@ export default {
 
 <style scoped>
 
+
 .singleProduct{
-    padding-top:81px;
+    padding-top:90px;
     color:White !important;
 }
 .relatedProductView{
@@ -103,8 +108,6 @@ export default {
     height: fit-content;
     aspect-ratio: 1;
     object-fit: cover;
-    /* width: 268px !important; 
-    height: 184px !important; */
     margin-top:8px;
 }
 
@@ -122,7 +125,21 @@ export default {
     opacity: 0;
 }
 
-/* 516x344 */
+#infoColumn{
+    border-right:2px solid greenyellow;
+    width: 0%;
+    margin-left: 50px;
+    padding:0%;
+}
+
+
+@media screen and (max-width:768px){
+    #info{
+        border-top: 2px solid greenyellow;
+        margin-top: 40px;
+        padding-top:20px
+    }
+}
 
 .heading{
     animation: pulse 3s linear infinite alternate;
@@ -130,7 +147,7 @@ export default {
 
 .img-fluid{
     width:1000px !important;
-    height: 497px !important;
+    height: 400px !important;
     object-fit: cover;
 }
 
@@ -159,11 +176,49 @@ export default {
     
 }
 
-/* 746 497 */
-
 @keyframes pulse {
     0%{transform: scale(1.1);}
     100%{transform: scale(1);}
+}
+
+.deleteButton{
+    padding-right:1rem;
+    padding-left:0.75rem;
+    padding-top: 0.5rem ;
+    padding-bottom:0.5rem ;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    font-size: 2rem;
+    border: 2px solid white;
+}
+.deleteButton:hover .bi-trash-fill{
+    transform: translateX(-130%);
+    color: greenyellow;
+}
+.deleteButton:hover .bi-cart{
+    transform: translateX(-90%);
+    color: greenyellow;
+}
+.deleteButton:hover span{
+    color: transparent;
+}
+.deleteButton:hover{
+    border-color: #76b900;
+    box-shadow: 0 0 2px #76b900;
+}
+
+.deleteButton span{
+    font-weight: bold;
+    transition: all 0.15s linear;
+}
+
+.bi{
+    transition: all 0.15s linear;
+    transform: translateX(10px);
 }
 
 </style>

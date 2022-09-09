@@ -72,8 +72,6 @@ export default {
     font-family: 'Roboto',sans-serif;
 }
 
-
-
 .deleteButton{
     padding-right:1rem;
     padding-left:0.75rem;
@@ -112,16 +110,6 @@ export default {
     transform: translateX(10px);
 }
 
-.table>:not(caption)>*>*{
-    background-color: transparent !important;
-}
 
-tbody:last-child{
-    border-bottom: hidden;
-}
-
-.table{
-    font-size: 1.1rem;
-}
 
 </style>

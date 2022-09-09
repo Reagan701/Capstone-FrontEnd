@@ -1,10 +1,10 @@
 <template>
-  <div class="modal fade text-black" :id="`productDelete`+product.prodId" tabindex="-1" :aria-labelledby="`productDeleteLabel`+product.prodId" aria-hidden="true">
+  <div class="modal fade text-white" :id="`productDelete`+product.prodId" tabindex="-1" :aria-labelledby="`productDeleteLabel`+product.prodId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Deleting - {{product.prodName}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <h4>Are you sure you would like to delete</h4>

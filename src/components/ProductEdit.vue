@@ -4,17 +4,34 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editing - {{product.prodName}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form @submit="editProduct">
-                    <input type="number" v-model="product.prodId">
-                    <input v-model="product.prodName" type="text">
-                    <input v-model="product.prodImg" type="text">
-                    <input v-model="product.prodDescription" type="text">
-                    <input v-model="product.category" type="text">
-                    <input v-model="product.quantity" type="number">
-                    <input v-model="product.price" type="number">
+            <div class="modal-body p-5">
+                <form class="row" @submit="editProduct">
+                    <div class="col-md-6 my-4">
+                        <label class="w-100">Name</label>
+                        <input class="w-100" v-model="product.prodName" type="text">
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <label class="w-100">Category</label>
+                        <input class="w-100" v-model="product.category" type="text">
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <label class="w-100">Quantity</label>
+                        <input class="w-100" v-model="product.quantity" type="number">
+                    </div>
+                    <div class="col-md-6 my-4">
+                        <label class="w-100">Price</label>
+                        <input class="w-100" v-model="product.price" type="number">
+                    </div>
+                    <div class="col-md-12 my-4">
+                        <label class="w-100">Image Link</label>
+                        <textarea style="resize:none" cols="30" rows="3" v-model="product.prodImg" class="w-100" type="text"></textarea>
+                    </div>
+                    <div class="col-md-12 my-4">
+                        <label class="w-100">Description</label>
+                        <textarea style="resize:none;" v-model="product.prodDescription" class="w-100" type="text" ></textarea>
+                    </div>
                     <button type="submit" class="button">Submit</button>
                 </form>
             </div>
@@ -48,5 +65,16 @@ export default {
 </script>
 
 <style scoped>
+
+.modal{
+    --bs-modal-width:800px !important;
+}
+
+label{
+    text-align: left;
+    padding-left:8px;
+    color:greenyellow;
+    font-weight: 900;
+}
 
 </style>

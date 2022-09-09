@@ -5,7 +5,7 @@
             <h3 class="mx-auto fw-bold text-white">{{singleCart.firstName}}'s Cart</h3>
         </div>
         <div class="row">
-            <ProductCard v-for="item in JSON.parse(singleCart.cartItems)" :key="item.cartID" :product="item"/>
+            <RelatedCard v-for="item in JSON.parse(singleCart.cartItems)" :key="item.cartID" :product="item"/>
         </div>
     </div>
     <div v-else class="viewport singleCart container d-flex justify-content-center align-items-center flex-column">
@@ -15,9 +15,9 @@
 
 <script>
 import Loader from '../components/Loader.vue'
-import ProductCard from '../components/ProductCard.vue'
+import RelatedCard from '../components/RelatedCard.vue'
 export default {
-    components:{ProductCard, Loader},
+    components:{RelatedCard, Loader},
     mounted(){
         setTimeout(() => {
             this.$store.dispatch('getSingleCartInfo', this.$route.params.id)

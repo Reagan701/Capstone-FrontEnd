@@ -276,13 +276,25 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
 
 @media screen and (max-width:992px){
   tr{
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
   td{
-      border:hidden;
-      padding-top:1rem;
+    border:hidden;
+    padding-top:1rem;
   }
+}
+
+.table>:not(caption)>*>*{
+    background-color: transparent !important;
+}
+
+tbody:last-child{
+    border-bottom: hidden;
+}
+
+.table{
+    font-size: 1.1rem;
 }
 
 </style>

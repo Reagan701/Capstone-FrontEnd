@@ -8,20 +8,24 @@
             </div>
             <div class="offcanvas-body">
                 <div v-if="currentCart">
-                    <div class="row mx-auto" v-if="currentCart.length<1">
-                        <h5 class="text-white">Your Cart is Empty</h5>
-                    </div>
-                    <div class="row mx-auto" v-else>
+                    <div class="row mx-auto">
                         <CartCard v-for="item in currentCart" :key="item.prodId" :product="item"/>
-                        <div style="border-top:2px solid white" class="pt-3 col-md-6">
-                            <router-link to="/checkout">
-                                <button data-bs-dismiss="offcanvas" class="ms-auto button w-50">Checkout</button>
-                            </router-link>
-                        </div>
-                        <div class="col-md-6">
-                            <button data-bs-dismiss="offcanvas" class="me-auto button w-50">Clear Cart</button>
+                        <div style="border-top:2px solid white" class="pt-3 col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <router-link to="/checkout">
+                                        <button data-bs-dismiss="offcanvas" class="ms-auto button w-50">Checkout</button>
+                                    </router-link>
+                                </div>
+                                <div class="col-md-6">
+                                    <button data-bs-dismiss="offcanvas" @click="clearCart" class="me-auto button w-50">Clear</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="row mx-auto" v-else>
+                    <h5 class="text-white">Your Cart is Empty</h5>
                 </div>
             </div>
         </div>
@@ -39,6 +43,11 @@ export default {
         },
         cartTotal(){
             return this.$store.state.cartTotal;
+        }
+    },
+    methods:{
+        clearCart(){
+            this.$store.dispatch('clearCart');
         }
     }
 }
