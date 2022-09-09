@@ -4,20 +4,17 @@
     <div class="mb-auto">
       <div class="row mt-5">
         <div class="col-md-6">
-          <router-link to="/admin/users"><button class="confirm">Users</button></router-link>
+          <router-link to="/admin/users"><button class="button">Users</button></router-link>
         </div>
         <div class="col-md-6">
           <router-link to="/admin/products">
-            <button class="confirm">Products</button>
+            <button class="button">Products</button>
           </router-link>
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-6">
-          <router-link to="/admin/billing"><button class="confirm">Billing Info</button></router-link>
-        </div>
-        <div class="col-md-6">
-          <router-link to="/admin/cart"><button class="confirm">Cart Information</button></router-link>
+        <div class="col-md-12">
+          <router-link to="/admin/billing"><button class="button">Billing Info</button></router-link>
         </div>
       </div>
     </div>
@@ -46,5 +43,9 @@ h1{
 }
 .mb-auto{
   margin-top:3rem ;
+}
+
+.button{
+  min-width: 200px;
 }
 </style>

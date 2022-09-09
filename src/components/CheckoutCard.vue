@@ -4,8 +4,8 @@
         <router-link :to="{name:'product', params:{id:product.prodId}}" >
             <img class="img-fluid" :src="product.prodImg" :alt="product.prodName">
         </router-link>
-        <p id="prodName" class="fw-bold mb-2 pt-lg-3 pt-sm-2">{{product.prodName}}</p>
-        <p class="fw-bold">R {{product.price}}</p>
+        <p class="pt-lg-3 pt-sm-2">{{product.prodName}}</p>
+        <p style="color:greenyellow">R {{product.price}}</p>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 
 .itemcontainer{
     padding:0.7rem;
-    margin: 2rem;
+    margin: 1rem;
     border:2px solid greenyellow;
     color:white;
     overflow: hidden;
@@ -34,27 +34,12 @@ export default {
     }
 }
 
-@media screen and (min-width:992px) and (max-width:1200px) {
-    
-    #prodName{
-        height: 80px;
-    }
-}
-
 @media screen and (max-width:991px){
     .itemcontainer{
         margin:1rem;
         font-size: 15px;
     }
 }
-
-@media screen and (min-width:769px) and (max-width:990px) {
-    #prodName{
-        height: 96px;
-    }
-    
-}
-
 
 @media screen and (max-width:768px) {
     .itemcontainer{
@@ -67,6 +52,8 @@ export default {
 p{
     padding: 0;
     margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 .img-fluid:hover{
@@ -78,9 +65,5 @@ p{
     width:200px;
     aspect-ratio: 1;
     object-fit: contain;
-}
-
-#prodName{
-    color:greenyellow;
 }
 </style>

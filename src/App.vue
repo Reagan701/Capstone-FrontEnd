@@ -286,15 +286,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
 }
 
 .table>:not(caption)>*>*{
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 tbody:last-child{
-    border-bottom: hidden;
+  border-bottom: hidden;
 }
 
 .table{
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 </style>

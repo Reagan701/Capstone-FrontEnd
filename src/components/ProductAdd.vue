@@ -1,7 +1,7 @@
 <template>
     <div class="modal fade text-white" id="addProduct" tabindex="-1" aria-labelledby="addProductModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add a product</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -9,9 +9,11 @@
             <div class="modal-body">
                 <form @submit="addProduct" class="row w-75 mx-auto">
                     <input placeholder="name" class="w-100 my-3" v-model="prodName" type="text">
-                    <select class="my-3" v-model="category">
+                    <select class="my-3 h-100" v-model="category">
                         <option selected value="Accessory">Accessory</option>
                         <option value="Console">Console</option>
+                        <option value="Computer Part">Computer Part</option>
+                        <option value="Computer Accessory">Computer Accessory</option>
                     </select>
                     <input placeholder="image link" class="w-100 my-3" v-model="prodImg" type="text">
                     <input placeholder="description" class="w-100 my-3" v-model="prodDescription" type="text">

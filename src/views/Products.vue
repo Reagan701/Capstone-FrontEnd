@@ -2,7 +2,7 @@
   <div v-if="products" class="viewport products container">
     <h1 class="fw-bold my-4">Our Items</h1>
     <div class="row">
-        <div id="filterColumn" class="col-md-3 d-flex flex-column gap-5 justify-content-start align-items-center col-lg-2">
+        <div @load="code" id="filterColumn" class="d-flex flex-column gap-5 justify-content-start align-items-center col-md-3">
             <h2>Filter:</h2>
             <input class="w-100" type="text" placeholder="search for anything" v-model="search">
             <select @change="checkFilterColors" v-model="filter" class="filterSelect">
@@ -74,6 +74,29 @@ export default {
                 return isMatch;
             });
             
+            if(this.name != 'By Name'){
+                if(this.name == 'asc'){
+                    prod = prod.sort((a,b)=> {
+                        if(a.prodName < b.prodName){
+                            return -1
+                        }
+                        if(a.prodName > b.prodName){
+                            return 1
+                        }
+                        return 0
+                    })
+                }else{
+                    prod = prod.sort((a,b)=> {
+                        if(a.prodName < b.prodName){
+                            return 1
+                        }
+                        if(a.prodName > b.prodName){
+                            return -1
+                        }
+                        return 0
+                    })
+                }
+            }
             if(this.price != "By Price"){
                 if(this.price == 'asc'){
                     prod = prod.sort((a,b)=>{return a.price-b.price})
@@ -81,6 +104,7 @@ export default {
                     prod = prod.sort((a,b)=>{return b.price-a.price})
                 }
             }
+
 
             return prod;
         }
@@ -91,6 +115,7 @@ export default {
             this.$store.commit('setSingleProduct',null)
             this.$store.commit('setProductCategory', null)
         }, 500);
+        
     },
     methods:{
         checkFilterColors(){
@@ -126,11 +151,41 @@ export default {
     position: fixed;
 }
 
+
 @media screen and (max-width:768px) {
     #filterColumn{
         position: inherit;
     }
     
+}
+@media screen and (min-width:769px) {
+    #filterColumn{
+        margin-left: -1rem;
+    }
+    
+}
+
+@media screen and (min-width:840px){
+    #filterColumn{
+        margin-left: -3rem;
+    }
+    
+}
+
+@media screen and (min-width:1500px) and (max-width:1799px) {
+    #filterColumn{
+        margin-left: -8rem
+    }
+}
+@media screen and (min-width:1800px) {
+    #filterColumn{
+        margin-left: calc(-55vw / 4);
+    }
+}
+@media screen and (min-width:2200px) {
+    #filterColumn{
+        margin-left: calc(-70vw / 4);
+    }
 }
 
 .row-border::before{

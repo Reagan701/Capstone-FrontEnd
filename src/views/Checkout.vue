@@ -1,45 +1,64 @@
 <template>
-    <div v-if="singleCart" class="viewport singleCart container">
+    <div v-if="singleCart && !ordered" class="viewport checkout container">
         <h1 class="pt-5 fw-bold">Checkout</h1>
         <div id="border" class="my-5 d-flex justify-content-start align-items-center">
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <ProductCard v-for="item in JSON.parse(singleCart.cartItems)" :key="item.cartID" :product="item"/>
+                    <CheckoutCard v-for="item in JSON.parse(singleCart.cartItems)" :key="item.cartID" :product="item"/>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div style="border-left:1px solid greenyellow; padding-left:40px" class="col-md-6">
+                <div class="row mt-1 mb-4">
+                    <div class="col-md-12">
+                        <h1 class="fw-bold" style="color:greenyellow">Cart Summary</h1>
+                        <p class="fw-bold" style="color:greenyellow">Total: R{{cartTotal}}</p>
+                    </div>
+                </div>
                 <form @submit="updateBilling">
                     <div class="col-md-6 w-100 d-flex justify-content-center align-items-center flex-column">
-                        <h2>BillingInfo</h2>
+                        <h2 style="color:greenyellow;" class="fw-bold">Billing Info</h2>
+                        <label class="w-100">Country</label>
                         <input class="w-100 mb-3" placeholder="country" type="text" v-model="country">
+                        <label class="w-100">City</label>
                         <input class="w-100 my-3" placeholder="city" type="text" v-model="city">
+                        <label class="w-100">Billing Address</label>
                         <input class="w-100 my-3" placeholder="billing address" type="text" v-model="billAddress">
-                        <input class="w-100 my-3" placeholder="postal code" type="text" v-model="postalCode">
-                        <button type="submit" class="mt-3 button">Save Changes</button>
+                        <label class="w-100">Postal Code</label>
+                        <input class="w-100 my-3" placeholder="postal code" type="number" v-model="postalCode">
+                        <button type="submit" class="mt-3 button">Order</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div v-else class="viewport singleCart container d-flex justify-content-center align-items-center flex-column">
+    <div v-else-if="ordered" class="viewport checkout container d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center flex-column gap-5">
+            <h1 class="fw-bold">Thank you for purchasing from Digiverse.</h1>
+                <router-link to="/contact">
+                    <button class="button">Contact us about anything</button>
+                </router-link>
+        </div>
+    </div>
+    <div v-else class="viewport checkout container d-flex justify-content-center align-items-center flex-column">
         <Loader/>
     </div>
 </template>
 
 <script>
 import Loader from '../components/Loader.vue'
-import ProductCard from '../components/ProductCard.vue'
+import CheckoutCard from '../components/RelatedCard.vue'
 export default {
-    components:{ProductCard, Loader},
+    components:{CheckoutCard, Loader},
     data(){
         return{
             billingID: null,
             billAddress: null,
             city:null,
             country:null,
-            postalCode: null
+            postalCode: null,
+            ordered: false
         }
     },
     async mounted(){
@@ -52,6 +71,7 @@ export default {
                 this.city = this.$store.state.singleBilling.city;
                 this.country = this.$store.state.singleBilling.country;
                 this.postalCode = this.$store.state.singleBilling.postalCode;
+                this.ordered = false;
             }
         }, 500);
     },
@@ -61,10 +81,14 @@ export default {
         },
         singleBilling(){
             return this.$store.state.singleBilling;
+        },
+        cartTotal(){
+            return this.$store.state.cartTotal;
         }
     },
     methods:{
-        updateBilling(){
+        updateBilling(e){
+            e.preventDefault();
             const newBill = {
                 billingID: this.billingID,
                 country: this.country,
@@ -72,7 +96,8 @@ export default {
                 city: this.city,
                 postalCode: this.postalCode
             }
-            this.$store.dispatch('updateBilling',newBill);
+            this.ordered = true;
+            this.$store.dispatch('updateBilling',[newBill,false]);
         }
     }
 }
@@ -80,7 +105,16 @@ export default {
 
 <style scoped>
 
-.singleCart{
+*{
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+.button{
+    width: 300px;
+}
+
+.checkout{
     padding-top:81px;
 }
 
@@ -104,4 +138,12 @@ i{
 i:hover{
     color:#76b900
 }
+
+label{
+    text-align: left;
+    padding-left:8px;
+    color:greenyellow;
+    font-weight: 900;
+}
+
 </style>

@@ -4,7 +4,7 @@
         <div class="row mb-3">
             <div class="col-md-4 headingMargin">
                 <h3>About</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio quas veritatis impedit illum ea accusamus molestias saepe iure</p>
+                <p>A technology eccomerce site dedicated to delivering only the highest quality hardware to our users</p>
             </div>
             <div class="col-md-4 headingMargin">
                 <h3>Quick Links</h3>
@@ -35,8 +35,8 @@
                 <h6>Made By: <span>Reagan Carolussen</span></h6>
             </div>
             <div class="d-flex justify-content-center align-items-center gap-3 ms-auto col-md-2">
+                <a href="https://github.com/Reagan701" target="_blank"> <i class="socialLink bi bi-github"></i></a>
                 <i class="socialLink bi bi-linkedin"></i>
-                <i class="socialLink bi bi-github"></i>
             </div>
         </div>
     </div>

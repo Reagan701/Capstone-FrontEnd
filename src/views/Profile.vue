@@ -12,26 +12,35 @@
                     <button @click="logOut" class="mx-auto mb-3 button">Logout</button>
                     <button @click="deleteAccount" class="mx-auto mt-3 button">Delete Account</button>
                 </div>
-                <div id="formColumn" class="col-md-9 p-5">
+                <div id="formColumn" class="form-floating col-md-9 p-5">
                     <div class="row">
                         <form @submit="updateUser" class="col-md-6">
                             <div class="w-100 col-md-6 d-flex justify-content-center align-items-center flex-column">
                                 <h2 id="userHeading">UserInfo</h2>
-                                <input class="w-100 mb-3" placeholder="first name" type="text" v-model="firstName">
+                                <label class="w-100">First Name</label>
+                                <input class="w-100 mb-3" placeholder="first name" id="floatingInput" type="text" v-model="firstName">
+                                <label class="w-100">Last Name</label>
                                 <input class="w-100 my-3" placeholder="last name" type="text" v-model="lastName">
+                                <label class="w-100">Phone Number</label>
                                 <input class="w-100 my-3" placeholder="phone number" type="text" v-model="phoneNumber">
+                                <label class="w-100">Email</label>
                                 <input class="w-100 my-3" placeholder="email address" type="text" v-model="userEmail">
+                                <label class="w-100">Password</label>
                                 <input type="text" class="w-100 my-3" placeholder="password" v-model="userPassword">
                                 <button type="submit" class="mt-3 button">Save Changes</button>
                             </div>
                         </form>
                         <form class="col-md-6" @submit="updateBilling">
-                            <div class="h-100 d-flex justify-content-center align-items-center flex-column">
+                            <div style="border-left:1px solid greenyellow; padding-left:40px" class="h-100 d-flex justify-content-center align-items-center flex-column">
                                 <h2 id="billingHeading">BillingInfo</h2>
+                                <label class="w-100">Country</label>
                                 <input class="w-100 mb-3" placeholder="country" type="text" v-model="country">
+                                <label class="w-100">City</label>
                                 <input class="w-100 my-3" placeholder="city" type="text" v-model="city">
+                                <label class="w-100">Billing Address</label>
                                 <input class="w-100 my-3" placeholder="billing address" type="text" v-model="billAddress">
-                                <input class="w-100 my-3" placeholder="postal code" type="text" v-model="postalCode">
+                                <label class="w-100">Postal Code</label>
+                                <input class="w-100 my-3" placeholder="postal code" type="number" v-model="postalCode">
                                 <button type="submit" class="mt-3 button">Save Changes</button>
                             </div>
                         </form>
@@ -105,7 +114,7 @@ export default {
                 city: this.city,
                 postalCode: this.postalCode
             }
-            this.$store.dispatch('updateBilling',newBill);
+            this.$store.dispatch('updateBilling',[newBill,true]);
         },
         updateUser(e){
             e.preventDefault();
@@ -172,6 +181,13 @@ h2{
         color: white;
         font-size: 10rem;
     }
+}
+
+label{
+    text-align: left;
+    padding-left:8px;
+    color:greenyellow;
+    font-weight: 900;
 }
 
 

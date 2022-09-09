@@ -1,5 +1,8 @@
 <template>
   <div v-if="singleProduct" class="viewport singleProduct container d-flex justify-content-center align-items-center flex-column">
+    <div class="d-flex justify-content-start align-items-center w-100 h-100 my-3">
+        <router-link to="/products"> <i id="backButton" class="bi bi-caret-left-fill"></i> </router-link>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <img :src="singleProduct.prodImg" id="mainImg" class="img-fluid" :alt="singleProduct.prodName">
@@ -25,8 +28,8 @@
                 </div>
                 <!-- <p>{{singleProduct.prodDescription}}</p> -->
                 <div class="d-flex justify-content-evenly ms-auto flex-column">
-                    <button class="deleteButton">
-                        <span>Cart</span>
+                    <button @click="addToCart" class="deleteButton">
+                        <span>Add to Cart</span>
                         <i class="bi bi-cart"></i>
                     </button>
                 </div>
@@ -36,7 +39,7 @@
     <div class="viewport relatedProductView">
         <div v-if="relatedProducts" class="row">
             <h1 class="mb-5 fw-bold heading">You might also like</h1>
-            <Card :product="product" v-for="product in relatedProducts.filter((x)=> {return x.prodName != singleProduct.prodName})" :key="product.prodID"/>
+            <Card :product="product" v-for="product in relatedProducts.filter((x)=> {return x.prodName != this.singleProduct.prodName})" :key="product.prodID"/>
         </div>
         <div v-else class="viewport singleProduct d-flex justify-content-center align-items-center">
             <Loader/>
@@ -84,7 +87,7 @@ export default {
             window.scrollTo(0,0);
             this.$store.commit('setSingleProduct',null);
             setTimeout(() => {
-                this.$store.dispatch('getSingleProduct', to.params.id); 
+                this.$store.dispatch('getSingleProduct', to.params.id);
             }, 500);
         }
     }
@@ -93,6 +96,14 @@ export default {
 
 <style scoped>
 
+*{
+    letter-spacing: 1px;
+}
+
+#backButton{
+    font-size: 3rem;
+    color: #76b900;
+}
 
 .singleProduct{
     padding-top:90px;
@@ -195,12 +206,8 @@ export default {
     font-size: 2rem;
     border: 2px solid white;
 }
-.deleteButton:hover .bi-trash-fill{
-    transform: translateX(-130%);
-    color: greenyellow;
-}
 .deleteButton:hover .bi-cart{
-    transform: translateX(-90%);
+    transform: translateX(-245%);
     color: greenyellow;
 }
 .deleteButton:hover span{

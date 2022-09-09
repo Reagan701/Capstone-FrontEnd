@@ -21,7 +21,7 @@
             <tr v-for="product in products" :key="product.prodId">
                 <th scope="row">{{product.prodId}}</th>
                 <td>{{product.prodName}}</td>
-                <td>{{product.prodImg.slice(0,50)}}</td>
+                <td>{{product.prodImg.slice(0,50)}}...</td>
                 <td>{{product.prodDescription}}</td>
                 <td>{{product.category}}</td>
                 <td>{{product.quantity}}</td>

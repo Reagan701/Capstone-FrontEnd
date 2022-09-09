@@ -67,6 +67,15 @@ export default {
 </script>
 
 <style scoped>
+
+*{
+    font-weight: bold;
+}
+
+th{
+    color: greenyellow;
+}
+
 .adminUsers{
     padding-top:81px;
     font-family: 'Roboto',sans-serif;

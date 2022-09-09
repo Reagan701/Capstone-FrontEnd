@@ -3,8 +3,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editing - {{product.prodName}}</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 style="color:greenyellow;" class="fw-bold modal-title">Editing - {{product.prodName}}</h5>
+                <button type="button" :id="`productClose`+product.prodId" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5">
                 <form class="row" @submit="editProduct">
@@ -14,7 +14,12 @@
                     </div>
                     <div class="col-md-6 my-4">
                         <label class="w-100">Category</label>
-                        <input class="w-100" v-model="product.category" type="text">
+                        <select class="w-100" v-model="product.category">
+                            <option selected value="Accessory">Accessory</option>
+                            <option value="Console">Console</option>
+                            <option value="Computer Part">Computer Part</option>
+                            <option value="Computer Accessory">Computer Accessory</option>
+                        </select>
                     </div>
                     <div class="col-md-6 my-4">
                         <label class="w-100">Quantity</label>
@@ -36,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="confirm me-auto" data-bs-dismiss="modal">Cancel</button>
+                <button class="button me-auto" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
@@ -58,6 +63,7 @@ export default {
                 quantity: this.product.quantity,
                 price: this.product.price
             }
+            document.getElementById(`productClose${this.product.prodId}`).click();
             this.$store.dispatch('editProduct', newProduct);
         }
     }
@@ -75,6 +81,17 @@ label{
     padding-left:8px;
     color:greenyellow;
     font-weight: 900;
+}
+
+select{
+    background: transparent;
+    border:2px solid #757575;
+    color: white;
+    height: 42px;
+}
+
+option{
+    background:#0c0c0c;
 }
 
 </style>

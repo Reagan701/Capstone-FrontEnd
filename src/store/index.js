@@ -90,10 +90,12 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/products/'+payload)
       .then((res)=>res.json())
       .then((data)=>
-      {
-        context.commit('setSingleProduct', data.results[0])
-        context.dispatch('getProductByCategory', data.results[0].category);
-      }
+        {
+          if(data.results){
+            context.commit('setSingleProduct', data.results[0])
+            context.dispatch('getProductByCategory', data.results[0].category);
+          }
+        }
       );
     },
     getAllUsers(context){
@@ -120,7 +122,7 @@ export default createStore({
         }
       })
       .then((res)=>res.json())
-      .then((data)=>console.log(data));
+      .then((data)=>context.dispatch('getProducts'));
     },
     deleteUser(context,payload){
       fetch('https://digiverseapi.herokuapp.com/users/'+payload, {
@@ -181,7 +183,6 @@ export default createStore({
             icon:'error',
             title:data.message,
             padding:'1rem',
-            button:false
             }
           )
         }else{
@@ -215,7 +216,7 @@ export default createStore({
     getProductByCategory(context,payload){
       fetch('https://digiverseapi.herokuapp.com/productCategory/'+ payload)
       .then((res)=>res.json())
-      .then((data)=> context.commit('setProductCategory', data.results));
+      .then((data)=>context.commit('setProductCategory',data.results));
     },
     addProduct(context, payload){
       fetch('https://digiverseapi.herokuapp.com/products', {
@@ -246,6 +247,9 @@ export default createStore({
         if(data.results[0].cartItems){
           context.commit('setCurrentCart',JSON.parse(data.results[0].cartItems));
           context.dispatch('getCartTotal')
+        }else{
+          context.commit('setCurrentCart',null);
+          context.dispatch('getCartTotal')
         }
       });
     },
@@ -268,7 +272,6 @@ export default createStore({
       })
       .then((res)=>res.json())
       .then((data)=> {
-        console.log(data);
         context.dispatch('getCurrentCart');
       })
     },
@@ -281,7 +284,6 @@ export default createStore({
       })
       .then((res)=>res.json())
       .then((data)=> {
-        console.log(data);
         context.dispatch('getCurrentCart');
       })
     },
@@ -289,7 +291,6 @@ export default createStore({
       fetch('https://digiverseapi.herokuapp.com/usercart/'+ payload)
       .then((res)=> res.json())
       .then((data)=> {
-        console.log(data.results[0])
         context.commit('setSingleCartInfo', data.results[0]);
       });
     },
@@ -301,14 +302,18 @@ export default createStore({
     updateBilling(context, payload){
       fetch('https://digiverseapi.herokuapp.com/billing/'+context.state.currentUser.userID, {
         method: 'PUT',
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload[0]),
         headers: {
           'Content-type': 'application/json; charset=UTF-8'
         }
       })
       .then((res)=> res.json())
       .then((data)=> {
-        context.commit('resetState');
+        if(payload[1] == false){
+          context.dispatch('clearCart');
+        }else{
+          context.commit('resetState');
+        }
       })
     },
     updateUser(context,payload){

@@ -1,7 +1,7 @@
 <template>
     <div v-if="billing" class="viewport adminBilling container">
-        <h1>Billing Info</h1>
-        <table class="table table-dark">
+        <h1 class="my-5">Billing Info</h1>
+        <table class="mx-auto table table-dark mb-5 pb-5">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -10,7 +10,6 @@
                     <th scope="col">City</th>
                     <th scope="col">Postal Code</th>
                     <th scope="col">User ID</th>
-                    <th scope="col">DELETE</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +20,6 @@
                     <td>{{bill.city}}</td>
                     <td>{{bill.postalCode}}</td>
                     <td>{{bill.userID}}</td>
-                    <td>Delete</td>
                 </tr>
             </tbody>
         </table>
@@ -55,6 +53,10 @@ export default {
 
 *{
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+th{
+    color: greenyellow;
 }
 
 .adminBilling{
